@@ -288,7 +288,7 @@ const NavbarPrimary = () => {
                   </a>
                 </li>
                 <li className='nav-item ms-5 ms-sm-0'>
-                  <Link href='/home/HomePage'>
+                  <Link href='/'>
                     <a className='d-block logo bg-black rounded p-1'>
                       <img
                         className='d-block h-100 w-100'

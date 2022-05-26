@@ -1,4 +1,8 @@
 import Head from 'next/head';
+import SelectedAds from '../components/SelectedAds';
+import HeroSection from '../pages/home/sections/HeroSection';
+import OurDealSection from './home/sections/OurDealSection';
+import ProductsTodaySection from './home/sections/ProductsTodaySection';
 
 export default function Home() {
   return (
@@ -9,7 +13,12 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <div>hello</div>
+      <main className='h-100'>
+        <HeroSection />
+        <OurDealSection />
+        <SelectedAds />
+        <ProductsTodaySection />
+      </main>
     </>
   );
 }
