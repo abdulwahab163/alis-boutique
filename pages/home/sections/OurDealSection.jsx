@@ -7,25 +7,25 @@ const OurDealSection = () => {
       title: 'Winter',
       image:
         'https://cdn.shopify.com/s/files/1/2635/3244/files/Winter-tiles-web_8576452c-8c0a-44af-ae90-3fee9fd85965.jpg?v=1644946386',
-      link: '/products',
+      link: '/products/ProductsPage',
     },
     {
       title: 'fragrance',
       image:
         'https://cdn.shopify.com/s/files/1/2635/3244/files/fragrance.jpg?v=1640066402',
-      link: '/products',
+      link: '/products/ProductsPage',
     },
     {
       title: 'footwear',
       image:
         'https://cdn.shopify.com/s/files/1/2635/3244/files/footware-Collection-tiles-web.jpg?v=1643183686',
-      link: '/products',
+      link: '/products/ProductsPage',
     },
     {
       title: 'Accessories',
       image:
         'https://cdn.shopify.com/s/files/1/2635/3244/files/jewellery.jpg?v=1640066589',
-      link: '/products',
+      link: '/products/ProductsPage',
     },
   ];
 
