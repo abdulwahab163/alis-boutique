@@ -1,0 +1,59 @@
+.steps-container-v {
+	transition: all 0.8s ease;
+}
+
+.steps-container-v * {
+	transition: all 0.8s ease;
+}
+
+.steps-container-v ul li {
+	position: relative;
+}
+
+.steps-container-v ul li span {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 3.4rem;
+	width: 3.4rem;
+	min-width: 3.4rem;
+	border-radius: 50%;
+	background-color: #eeeeee;
+	color: #1d1d1d;
+	font-size: 0.8rem;
+	font-weight: 500;
+	position: relative;
+	z-index: 3;
+}
+
+.steps-container-v ul li.done span, .steps-container-v ul li.active span {
+	background-color: #1d1d1d;
+	color: #fff;
+	border: 7px solid #fff;
+	outline: 2px solid #1d1d1d;
+}
+
+.steps-container-v ul li.done b, .steps-container-v ul li.active b {
+	position: absolute;
+	display: block;
+	height: 200%;
+	top: 0.8rem;
+	left: 1.6rem;
+	width: 0.2rem;
+	border-right: 0.3rem solid #1d1d1d;
+}
+
+.steps-container-v ul li.fall b {
+	position: absolute;
+	display: block;
+	height: 200%;
+	top: 0.8rem;
+	left: 1.6rem;
+	width: 0.2rem;
+	border-right: 0.3rem solid #eeeeee;
+}
+
+.steps-container-v ul li:last-child b {
+	display: none;
+}
+

@@ -1,0 +1,215 @@
+.steps-container {
+  ol {
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    list-style: none;
+    padding: 0 0 50px;
+
+    @media screen and (max-width: 600px) {
+      padding: 0 0 10px;
+    }
+
+    span {
+      opacity: 0;
+    }
+
+    li {
+      transition: all 0.3s ease;
+      border-bottom: 1px solid #1c213e;
+      line-height: 4.7rem;
+
+      text-align: center;
+      padding: 0 0.7rem;
+      cursor: pointer;
+
+      &.done,
+      &.active {
+        border-bottom: 1px solid $primary;
+      }
+    }
+
+    li::before {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      box-shadow: 0 0 11px 0.2px #ffffff52;
+      bottom: -50px;
+
+      color: #5e5e5e;
+      font-size: 25px;
+      font-weight: 800;
+
+      background-size: 50%;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      left: 100%;
+      transition: all 0.3s ease;
+
+      position: relative;
+      float: left;
+      line-height: 1.4em;
+    }
+
+    li:nth-child(1) {
+      border-bottom: 0;
+      width: 0;
+
+      &::before {
+        content: '';
+        background-image: url('../assets/cart.svg');
+        border: 7px solid $white;
+        outline: 2px solid $primary;
+        background-color: #5e5e5e;
+      }
+      &.done::before,
+      &.active::before {
+        content: '';
+        background-image: url('../assets/cart.svg');
+        border: 7px solid $white;
+        outline: 2px solid $primary;
+        background-color: $primary;
+      }
+      &.done::before {
+        background-image: url('../assets/check-white.svg');
+      }
+    }
+
+    li:nth-child(2) {
+      flex: 1;
+
+      @media screen and (max-width: 600px) {
+        flex: 0;
+        width: 49px;
+      }
+
+      &::before {
+        content: '';
+        background-image: url('../assets/delivery.svg');
+        border: 7px solid $white;
+        outline: 2px solid $primary;
+        background-color: #5e5e5e;
+      }
+      &.done::before,
+      &.active::before {
+        content: '';
+        background-image: url('../assets/delivery.svg');
+        border: 7px solid $white;
+        outline: 2px solid $primary;
+        background-color: $primary;
+      }
+
+      &.done::before {
+        background-image: url('../assets/check-white.svg');
+      }
+    }
+
+    li:nth-child(3) {
+      width: 50%;
+      @media screen and (max-width: 600px) {
+        width: 52px;
+      }
+
+      &::before {
+        content: '';
+        left: 88%;
+        background-image: url('../assets/payments.svg');
+        border: 7px solid $white;
+        outline: 2px solid $primary;
+        background-color: #5e5e5e;
+      }
+      &.done::before,
+      &.active::before {
+        content: '';
+        background-image: url('../assets/payments.svg');
+        border: 7px solid $white;
+        outline: 2px solid $primary;
+        background-color: $primary;
+      }
+      &.done::before {
+        background-image: url('../assets/check-white.svg');
+      }
+    }
+  }
+}
+
+
+// ===
+
+// ===
+
+.steps-container-v { 
+
+  transition: all 0.8s ease;
+
+ * { 
+  transition: all 0.8s ease;
+ }
+
+  ul {
+  
+    li { 
+      position: relative;
+      span { 
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 3.4rem;
+        width: 3.4rem;
+        min-width: 3.4rem;
+        border-radius: 50%;
+        background-color: $light;
+        color: $primary;
+        font-size: 0.8rem;
+        font-weight: 500;
+        position: relative;
+        z-index: 3;
+      }
+
+      &.done,
+      &.active { 
+       span { 
+        background-color: $primary;
+         
+        color: $white;
+        border: 7px solid $white;
+        outline: 2px solid $primary;
+       }
+
+       b { 
+        position: absolute;
+        display: block;
+        height: 200%;
+        top: 0.8rem;
+        left: 1.6rem;
+        width: 0.2rem;
+        border-right: 0.3rem solid $primary;
+      }
+      }
+
+      &.fall { 
+        b { 
+          position: absolute;
+          display: block;
+          height: 200%;
+          top: 0.8rem;
+          left: 1.6rem;
+          width: 0.2rem;
+          border-right: 0.3rem solid $light;
+        }
+      }
+
+      &:last-child {  
+        b { 
+          display: none;
+        }
+      } 
+    }  
+  }
+
+}
