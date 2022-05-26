@@ -27,14 +27,15 @@ const ProductCard = ({ item, className = 'height-size-3' }) => {
             alt='..'
           />
         )}
-        {item.discountState && (
-          <div className='badge-container position-absolute top-0 p-3'>
-            <span className='badge bg-danger text-white rounded-0 fw-normal'>
-              Sale {item.discount} off
-            </span>
-          </div>
-        )}
         <div className='overlay'>
+          {item.discountState && (
+            <div className='badge-container position-absolute start-0 top-0 p-3'>
+              <span className='badge bg-danger text-white rounded-0 fw-normal'>
+                Sale {item.discount} off
+              </span>
+            </div>
+          )}
+
           <Link href='/detail/DetailPage'>
             <a className='item btn btn-primary text-capitalize w-100'>
               Quickview

@@ -9,7 +9,7 @@ const SelectedAds = () => {
   const list = [
     {
       image:
-        'https://cdn.shopify.com/s/files/1/2635/3244/products/DSC_9543_34d73827-c490-4943-911f-22032147f5cd_1066x.jpg?v=1646826873',
+        'https://images.unsplash.com/photo-1576828831022-ca41d3905fb7?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=423',
       hoverImage:
         'https://cdn.shopify.com/s/files/1/2635/3244/products/DSC_9544_6fd4fc26-bb9a-44f2-824f-213b96fbd3d2_533x.jpg?v=1646826873',
       name: 'Tear Drop Dangling Earrings',
@@ -25,6 +25,7 @@ const SelectedAds = () => {
       hoverImage:
         'https://cdn.shopify.com/s/files/1/2635/3244/products/DSC01316_533x.jpg?v=1646892566',
       isHoverImage: true,
+
       name: 'Loose Knit 3/4 Sleeve',
       price: '$119.99',
     },
@@ -33,6 +34,7 @@ const SelectedAds = () => {
         'https://cdn.shopify.com/s/files/1/2635/3244/products/DSC_9624_fba97b12-bc22-4e16-a13c-4d3e70363995_533x.jpg?v=1646639839',
       name: 'Basic Slim Fit T-Shirt',
       price: '$100',
+
       discountState: true,
       discount: '50%',
       discountPrice: '$50',
