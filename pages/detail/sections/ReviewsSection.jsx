@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 import { ProgressBar } from 'react-bootstrap';
 import StarComponent from '../../../components/StarComponent';
@@ -42,7 +43,7 @@ const ReviewsSection = () => {
               <div>
                 <ul className='nav flex-column gap-2'>
                   {ratingArr.map((item) => (
-                    <li>
+                    <li key={item.number}>
                       <div className='d-flex align-items-center'>
                         <span className='text-warning'>
                           <i className='mdi-18px mdi mdi-star' />
@@ -64,7 +65,7 @@ const ReviewsSection = () => {
           <div className='mt-4 text-center'>
             <button
               type='button'
-              class='btn btn-primary shadow-1 rounded-pill py-3 px-5'
+              className='btn btn-primary shadow-1 rounded-pill py-3 px-5'
             >
               ADD OPINION
             </button>
@@ -73,15 +74,19 @@ const ReviewsSection = () => {
         <li className='col-12 col-lg-6 col-xl-5'>
           <ul className='nav flex-column gap-4'>
             {userReview.map((item) => (
-              <li>
+              <li key={item.name}>
                 <div className='d-flex'>
                   <div>
                     <div className='image-size-very-small bg-light rounded-circle shadow-sm me-4'>
-                      <img
-                        className='d-block h-100 w-100 object-cover rounded-circle shadow-sm'
-                        src='https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&auhref=format&fit=crop&w=500&q=60'
-                        alt='...'
-                      />
+                      <span className='d-block h-100 w-100 rounded-circle shadow-sm position-relative'>
+                        <Image
+                          className='rounded-circle'
+                          src='https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHw%3D&auhref=format&fit=crop&w=500&q=60'
+                          alt='..'
+                          layout='fill'
+                          objectFit='cover'
+                        />
+                      </span>
                     </div>
                   </div>
                   <ul className='nav flex-column'>

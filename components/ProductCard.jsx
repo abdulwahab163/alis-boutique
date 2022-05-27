@@ -7,25 +7,24 @@ const ProductCard = ({ item, className = 'height-size-3' }) => {
     <div className='product-card'>
       <div className={`position-relative ${className}`}>
         <span className='placeholder placeholder-wave w-100 h-100 position-absolute bg-light' />
-        {/* <div className='image-main d-block h-100 w-100 bg-light'>
+        <div className='image-main d-block h-100 w-100 bg-light'>
           <Image
-            src={`/assets/images/products/product-image-0.jpg`}
+            src={`${item.image}`}
             alt='..'
             layout='fill'
             objectFit='cover'
           />
-        </div> */}
-        <img
-          className='image-main d-block h-100 w-100 object-cover bg-light'
-          src={`${item.image}`}
-          alt='..'
-        />
+        </div>
+
         {item.isHoverImage && (
-          <img
-            className='image-hover d-block h-100 w-100 object-cover bg-light'
-            src={`${item.hoverImage}`}
-            alt='..'
-          />
+          <div className='image-hover d-block h-100 w-100 object-cover bg-light'>
+            <Image
+              src={`${item.hoverImage}`}
+              alt='..'
+              layout='fill'
+              objectFit='cover'
+            />
+          </div>
         )}
         <div className='overlay'>
           {item.discountState && (

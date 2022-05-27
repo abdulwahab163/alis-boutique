@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 import ButtonWithIcon from '../../../components/ButtonWithIcon';
 
@@ -27,22 +28,31 @@ const ProfileSection = () => {
                     className='btn hover-scale-small p-0 h-100 w-100'
                     htmlFor='img'
                   >
-                    <img
-                      className='d-block h-100 w-100 rounded-lg position-relative bg-primary object-cover opacity-75'
-                      src='https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auhref=format&fit=crop&w=580&q=80'
-                      alt='...'
-                    />
+                    <span className='d-block h-100 w-100 rounded-lg position-relative bg-primary opacity-75'>
+                      <Image
+                        className='rounded-lg'
+                        src={`https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auhref=format&fit=crop&w=580&q=80`}
+                        alt='..'
+                        layout='fill'
+                        objectFit='cover'
+                      />
+                    </span>
+
                     <input type='file' id='img' name='img' accept='image/*' />
                   </label>
                 </div>
               ) : (
                 <>
                   <div className='placeholder placeholder-wave position-absolute start-0 h-100 w-100 rounded-lg' />
-                  <img
-                    className='d-block h-100 w-100 rounded-lg position-relative object-cover'
-                    src='https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auhref=format&fit=crop&w=580&q=80'
-                    alt='...'
-                  />
+                  <span className='d-block h-100 w-100 rounded-lg position-relative'>
+                    <Image
+                      className='rounded-lg'
+                      src={`https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auhref=format&fit=crop&w=580&q=80`}
+                      alt='..'
+                      layout='fill'
+                      objectFit='cover'
+                    />
+                  </span>
                 </>
               )}
             </div>

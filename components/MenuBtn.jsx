@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const MenuBtn = ({ name, categories, subCategories }) => {
   const [check, setCheck] = useState('');
@@ -59,17 +60,20 @@ const MenuBtn = ({ name, categories, subCategories }) => {
               </div>
               <div className='col-6 col-md-4 col-xl-3'>
                 <div className='sticky-top'>
-                  {categories.map((item) => (
-                    <>
-                      <img
-                        className={`d-block h-100 w-100 ${
-                          check === item.typeImage ? 'd-block' : 'd-none'
-                        } `}
-                        src={`${item.typeImage}`}
-                        alt='....'
-                      />
-                    </>
-                  ))}
+                  <div className='height-size-2 position-relative'>
+                    {categories.map((item) => (
+                      <>
+                        <Image
+                          className={`d-block h-100 w-100 ${
+                            check === item.typeImage ? 'd-block' : 'd-none'
+                          } `}
+                          src={`${item.typeImage}`}
+                          alt='..'
+                          layout='fill'
+                        />
+                      </>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>

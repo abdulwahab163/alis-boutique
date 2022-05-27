@@ -10,6 +10,7 @@ import AuthModal from '../pages/auth/AuthModal';
 import SignIn from '../pages/auth/SignIn';
 import ForgotPassword from '../pages/auth/ForgotPassword';
 import SignUp from '../pages/auth/SignUp';
+import Image from 'next/image';
 
 const NavbarPrimary = () => {
   const [show, setShow] = useState(false);
@@ -289,11 +290,12 @@ const NavbarPrimary = () => {
                 </li>
                 <li className='nav-item ms-5 ms-sm-0'>
                   <Link href='/'>
-                    <a className='d-block logo bg-black rounded p-1'>
-                      <img
-                        className='d-block h-100 w-100'
-                        src='/assets/images/logo.webp'
-                        alt='...'
+                    <a className='d-block logo bg-black rounded p-1 position-relative'>
+                      <Image
+                        src={`/assets/images/logo.webp`}
+                        alt='..'
+                        layout='fill'
+                        // objectFit='cover'
                       />
                     </a>
                   </Link>
@@ -347,7 +349,7 @@ const NavbarPrimary = () => {
         {/* Mobile Search row 3 */}
         <div className='bg-gray w-100 d-md-none py-1 px-3'>
           <ul className='nav justify-content-center align-items-center'>
-            <li className='nav-item py-1 py-md-0'>
+            {/* <li className='nav-item py-1 py-md-0'>
               <a
                 href='https://api.whatsapp.com/send/?phone=923104018841&text=https%3A%2F%2Fwww.limelight.pk%2F&app_absent=0'
                 target='_blank'
@@ -361,18 +363,21 @@ const NavbarPrimary = () => {
               <a href='tel:+92311-1222681' className='px-1 cursor-pointer'>
                 <i className='mdi fs-4 mdi-phone' />
               </a>
-            </li>
+            </li> */}
             <li className='nav-item py-1 py-md-0'>
               <li className='nav-item py-1 py-md-0'>
                 {login ? (
                   <Dropdown className='dropdown-remove-arrow dropdown-sign'>
                     <Dropdown.Toggle variant='...'>
                       <button className='btn p-0 btn-icon border border-2 rounded-circle'>
-                        <img
-                          className='btn-icon-1 rounded-circle'
-                          src='https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auhref=format&fit=crop&w=580&q=80'
-                          alt=''
-                        />
+                        <span className='btn-icon-1 rounded-circle position-relative'>
+                          <Image
+                            src='https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auhref=format&fit=crop&w=580&q=80'
+                            alt='..'
+                            layout='fill'
+                            className='rounded-circle'
+                          />
+                        </span>
                       </button>
                     </Dropdown.Toggle>
 
@@ -385,7 +390,7 @@ const NavbarPrimary = () => {
                       </Dropdown.Item>
                       <Dropdown.Divider />
                       <Dropdown.Item onClick={() => setLogin(!login)}>
-                        <a> Log Out</a>
+                        Log Out
                       </Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>
@@ -436,11 +441,14 @@ const NavbarPrimary = () => {
                     <Dropdown className='dropdown-remove-arrow dropdown-sign'>
                       <Dropdown.Toggle variant='...'>
                         <button className='btn p-0 btn-icon border border-2 rounded-circle'>
-                          <img
-                            className='btn-icon-1 rounded-circle'
-                            src='https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auhref=format&fit=crop&w=580&q=80'
-                            alt=''
-                          />
+                          <span className='btn-icon-1 rounded-circle position-relative'>
+                            <Image
+                              src='https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auhref=format&fit=crop&w=580&q=80'
+                              alt='..'
+                              layout='fill'
+                              className='rounded-circle'
+                            />
+                          </span>
                         </button>
                       </Dropdown.Toggle>
 
@@ -449,11 +457,7 @@ const NavbarPrimary = () => {
                           Profile
                         </Dropdown.Item>
                         <Dropdown.Divider />
-                        <Dropdown.Item
-                          as={Link}
-                          href='/dasds'
-                          onClick={() => setLogin(!login)}
-                        >
+                        <Dropdown.Item onClick={() => setLogin(!login)}>
                           Log Out
                         </Dropdown.Item>
                       </Dropdown.Menu>

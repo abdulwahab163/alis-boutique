@@ -11,7 +11,7 @@ const SelectType = () => {
   return (
     <ul className='nav flex-column gap-3'>
       {type.map((item) => (
-        <li>
+        <li key={item.name}>
           <div className='d-flex align-items-center'>
             <input
               className='form-check-input form-check'
@@ -21,7 +21,7 @@ const SelectType = () => {
             />
             <label
               className='mb-0 ms-3 text-capitalize cursor-pointer'
-              for={item.name}
+              htmlFor={item.name}
             >
               {item.name} <span className='text-black-50'>{item.number}</span>
             </label>

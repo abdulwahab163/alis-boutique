@@ -35,7 +35,7 @@ const ProductsTypes = () => {
       <h2 className='mb-3 text-center text-capitalize'>Summer 22,</h2>
       <ul className='nav justify-content-center gap-4'>
         {list.map((item) => (
-          <li key='type-card'>
+          <li key={item.title}>
             <TypeCard imageUrl={item.imageUrl} title={item.title} />
           </li>
         ))}

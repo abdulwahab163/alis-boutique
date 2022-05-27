@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 import ContainerPrimary from '../../../components/Container';
 
@@ -42,11 +43,15 @@ const WhyUsSection = () => {
               {list.map((item) => (
                 <li key={item.image} className='px-4'>
                   <div className='mb-3' style={{ height: 70, width: 70 }}>
-                    <img
-                      className='h-100 w-100 d-block object-cover rounded-lg'
-                      src={`/assets/images/why-us/${item.image}`}
-                      alt='...'
-                    />
+                    <span className='h-100 w-100 d-block rounded-lg position-relative'>
+                      <Image
+                        className='rounded-circle'
+                        src={`/assets/images/why-us/${item.image}`}
+                        alt='..'
+                        layout='fill'
+                        objectFit='cover'
+                      />
+                    </span>
                   </div>
                   <h6 className='mb-2 fw-normal text-capitalize'>
                     {item.title}

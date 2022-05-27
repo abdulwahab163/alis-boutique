@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 
 const DescriptionSection = () => {
@@ -7,11 +8,15 @@ const DescriptionSection = () => {
         <li>
           <div className='text-center'>
             <div className='mb-4 image-size-very-small mx-auto'>
-              <img
-                className='d-block h-100 w-100 object-contain'
-                src='/assets/images/description-icon-0.png'
-                alt='...'
-              />
+              <span className='d-block h-100 w-100 position-relative'>
+                <Image
+                  className='rounded-circle'
+                  src='/assets/images/description-icon-0.png'
+                  alt='..'
+                  layout='fill'
+                  objectFit='contain'
+                />
+              </span>
             </div>
             <h5 className='mb-4 fw-normal'>Details and product description</h5>
             <p className='mb-0 text-black-50'>
@@ -25,11 +30,15 @@ const DescriptionSection = () => {
           <div>
             <div className='text-center'>
               <div className='mb-4 image-size-very-small mx-auto'>
-                <img
-                  className='d-block h-100 w-100 object-contain'
-                  src='/assets/images/description-icon-1.png'
-                  alt='...'
-                />
+                <span className='d-block h-100 w-100 position-relative'>
+                  <Image
+                    className='rounded-circle'
+                    src='/assets/images/description-icon-1.png'
+                    alt='..'
+                    layout='fill'
+                    objectFit='contain'
+                  />
+                </span>
               </div>
               <h5 className='mb-4 fw-normal'>Material(s) and care</h5>
               <p className='mb-0 text-black-50'>

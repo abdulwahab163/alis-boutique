@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import CartTable from './CartTable';
+import Image from 'next/image';
 
 const CartSummarySection = ({ isPage }) => {
   const [edit, setEdit] = React.useState('');
@@ -34,11 +35,12 @@ const CartSummarySection = ({ isPage }) => {
                 <li>
                   <ul className='nav row row-cols-2 row-cols-md-3'>
                     {listOfCards.map((item) => (
-                      <li>
+                      <li key={item.src}>
                         <button type='button' className='btn'>
-                          <img
+                          <Image
                             src={`/assets/images/cards/${item.src}`}
-                            alt='...'
+                            alt='..'
+                            layout='fill'
                           />
                         </button>
                       </li>
@@ -60,7 +62,7 @@ const CartSummarySection = ({ isPage }) => {
                 <li>
                   <ul className='nav flex-column gap-2'>
                     {AddressList.map((item) => (
-                      <li>
+                      <li key={item.value}>
                         {edit ? (
                           <input
                             type='text'

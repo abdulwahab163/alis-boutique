@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { NavLink } from './NavLink';
 import ContainerPrimary from './Container';
+import Image from 'next/image';
 // logo
 
 const FooterPrimary = () => {
@@ -65,11 +66,13 @@ const FooterPrimary = () => {
                   <li className='mb-4'>
                     <Link href='/'>
                       <a className='logo bg-black rounded p-1'>
-                        <img
-                          className='d-block h-100 w-100'
-                          src='/assets/images/logo.webp'
-                          alt='...'
-                        />
+                        <span className='d-block h-100 w-100 position-relative'>
+                          <Image
+                            src='/assets/images/logo.webp'
+                            alt='..'
+                            layout='fill'
+                          />
+                        </span>
                       </a>
                     </Link>
                   </li>

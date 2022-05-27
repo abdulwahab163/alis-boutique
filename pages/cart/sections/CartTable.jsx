@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 import { Table } from 'react-bootstrap';
 import CounterComponent from '../../../components/CounterComponent';
@@ -27,7 +28,7 @@ const CartTable = () => {
           <thead>
             <tr role='row'>
               {headList.map((item) => (
-                <th>
+                <th key={item.name}>
                   {item.empty ? (
                     <></>
                   ) : (
@@ -47,16 +48,19 @@ const CartTable = () => {
           </thead>
           <tbody className='border-0 table-border'>
             {list.map((item) => (
-              <tr role='row'>
+              <tr key={item.name} role='row'>
                 <td className='text-center py-3'>
                   <div className='d-flex align-items-center'>
                     <span className='d-block image-size-very-small shadow-sm rounded-circle position-relative me-3'>
                       <span className='d-block position-absolute placeholder h-100 w-100 placeholder-wave rounded-circle bg-light' />
-                      <img
-                        className='d-block h-100 w-100 shadow-sm rounded-circle position-relative'
-                        src='https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auhref=format&fit=crop&w=580&q=80'
-                        alt='...'
-                      />
+                      <span className='d-block h-100 w-100 shadow-sm rounded-circle position-relative'>
+                        <Image
+                          className='rounded-circle'
+                          src={`https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auhref=format&fit=crop&w=580&q=80`}
+                          alt='..'
+                          layout='fill'
+                        />
+                      </span>
                     </span>
                     <span className='text-start'>
                       <div>T-Shirt Summer Vibes</div>

@@ -3,6 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Navigation, Thumbs } from 'swiper';
 import ImageZoom from 'react-image-zooom';
 import { Accordion } from 'react-bootstrap';
+import Image from 'next/image';
 
 const DetailThumbsSection = ({ description }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -44,16 +45,20 @@ const DetailThumbsSection = ({ description }) => {
           watchSlidesProgress={true}
         >
           {list.map((item) => (
-            <SwiperSlide>
+            <SwiperSlide key={item.src}>
               <button
                 type='button'
                 className='mt-3 btn bg-light bg-opacity-25 hover-scale-small p-0 image-size-small w-100'
               >
-                <img
-                  className='d-block h-100 w-100 object-contain'
-                  src={`${item.src}`}
-                  alt='...'
-                />
+                <span className='d-block h-100 w-100 position-relative'>
+                  <Image
+                    className='rounded-circle'
+                    src={`${item.src}`}
+                    alt='..'
+                    layout='fill'
+                    objectFit='contain'
+                  />
+                </span>
               </button>
             </SwiperSlide>
           ))}
@@ -122,7 +127,7 @@ const DetailThumbsSection = ({ description }) => {
           navigation={true}
         >
           {list.map((item) => (
-            <SwiperSlide>
+            <SwiperSlide key={item.src}>
               <div className='height-size-4 bg-light bg-opacity-25'>
                 <ImageZoom
                   width='100%'
@@ -131,11 +136,15 @@ const DetailThumbsSection = ({ description }) => {
                   alt='....'
                   zoom='250'
                 />
-                {/* <img
-                  className='d-block h-100 w-100'
-                  src={`${item.src}`}
-                  alt='...'
-                /> */}
+                {/* <span className='d-block h-100 w-100 position-relative'>
+                  <Image
+                    className='rounded-circle'
+                    src={`${item.src}`}
+                    alt='..'
+                    layout='fill'
+                    objectFit='contain'
+                  />
+                </span> */}
               </div>
             </SwiperSlide>
           ))}
