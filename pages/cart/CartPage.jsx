@@ -308,7 +308,7 @@ const CartPage = () => {
                     <div className='ms-auto'>
                       <Link
                         target='_blank'
-                        href='/products/ProductsPage'
+                        href='/products/productsPage'
                         className='btn btn-primary-1 rounded-pill py-2 px-4 text-capitalize'
                       >
                         Continue shopping

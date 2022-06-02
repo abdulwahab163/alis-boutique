@@ -5,33 +5,9 @@ import ImageZoom from 'react-image-zooom';
 import { Accordion } from 'react-bootstrap';
 import Image from 'next/image';
 
-const DetailThumbsSection = ({ description }) => {
+const DetailThumbsSection = ({ productImages, description }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [readmore, setReadMore] = useState(false);
-
-  const list = [
-    {
-      src: 'https://cdn.shopify.com/s/files/1/2635/3244/products/W1114SU-FRE-001.jpg?v=1642487628',
-    },
-    {
-      src: 'https://cdn.shopify.com/s/files/1/2635/3244/products/DSC_0622_b4f9ae67-26ad-40aa-8536-ece5917823b0.jpg?v=1643277446',
-    },
-    {
-      src: 'https://cdn.shopify.com/s/files/1/2635/3244/products/DSC_0629_2a321b0c-c417-4392-847a-18d099e95ac8.jpg?v=1643277446',
-    },
-    {
-      src: 'https://cdn.shopify.com/s/files/1/2635/3244/products/DSC_0651_e9c6c054-f6bb-4250-8c92-16cc8fe21e76.jpg?v=1642487625',
-    },
-    {
-      src: 'https://cdn.shopify.com/s/files/1/2635/3244/products/DSC_0647.jpg?v=1642487626',
-    },
-    {
-      src: 'https://cdn.shopify.com/s/files/1/2635/3244/products/w1114_a7b1d3bf-6de7-4513-8654-68f81a6137e5.jpg?v=1645771088',
-    },
-    {
-      src: 'https://cdn.shopify.com/s/files/1/2635/3244/products/w1114tr_c59dbaef-b73f-4408-956c-dab09457267d.jpg?v=1645771088',
-    },
-  ];
 
   return (
     <>
@@ -44,8 +20,8 @@ const DetailThumbsSection = ({ description }) => {
           freeMode={true}
           watchSlidesProgress={true}
         >
-          {list.map((item) => (
-            <SwiperSlide key={item.src}>
+          {productImages?.map((item) => (
+            <SwiperSlide key={item.url}>
               <button
                 type='button'
                 className='mt-3 btn bg-light bg-opacity-25 hover-scale-small p-0 image-size-small w-100'
@@ -53,7 +29,7 @@ const DetailThumbsSection = ({ description }) => {
                 <span className='d-block h-100 w-100 position-relative'>
                   <Image
                     className='rounded-circle'
-                    src={`${item.src}`}
+                    src={`${item.url}`}
                     alt='..'
                     layout='fill'
                     objectFit='contain'
@@ -90,9 +66,6 @@ const DetailThumbsSection = ({ description }) => {
             </div>
           </li>
           <li>
-            <div>
-              <b>Code:</b> W1114SU-FRE-001
-            </div>
           </li>
           <li>
             <div>
@@ -126,25 +99,16 @@ const DetailThumbsSection = ({ description }) => {
           thumbs={{ swiper: thumbsSwiper }}
           navigation={true}
         >
-          {list.map((item) => (
-            <SwiperSlide key={item.src}>
+          {productImages?.map((item) => (
+            <SwiperSlide key={item.url}>
               <div className='height-size-4 bg-light bg-opacity-25'>
                 <ImageZoom
                   width='100%'
                   height='100%'
-                  src={`${item.src}`}
+                  src={`${item.url}`}
                   alt='....'
                   zoom='250'
                 />
-                {/* <span className='d-block h-100 w-100 position-relative'>
-                  <Image
-                    className='rounded-circle'
-                    src={`${item.src}`}
-                    alt='..'
-                    layout='fill'
-                    objectFit='contain'
-                  />
-                </span> */}
               </div>
             </SwiperSlide>
           ))}

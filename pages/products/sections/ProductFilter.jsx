@@ -15,7 +15,7 @@ const ProductFilter = () => {
         <MultiRangeSlider
           min={0}
           max={10000}
-          onChange={({ min, max }) => console.log(`min = ${min}, max = ${max}`)}
+          onChange={({ min, max }) =>{} }
         />
       ),
     },

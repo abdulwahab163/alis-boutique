@@ -106,7 +106,7 @@ const CartSummarySection = ({ isPage }) => {
                     <li>
                       <div>
                         <Link
-                          href='/products/ProductsPage'
+                          href='/products/productsPage'
                           className='btn btn-primary-1 py-2 px-4 text-capitalize w-100'
                         >
                           Continue shopping
