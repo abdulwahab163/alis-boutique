@@ -36,7 +36,7 @@ const ProductCard = ({ item, className = "height-size-3" }) => {
           {item.saleDiscount && (
             <div className="badge-container position-absolute start-0 top-0 p-3">
               <span className="badge bg-danger text-white rounded-0 fw-normal">
-                Sale {item.saleDiscount} off
+                Sale {item.saleDiscount} % off
               </span>
             </div>
           )}
