@@ -20,6 +20,7 @@ const NavbarPrimary = () => {
 
   const { navList } = useSelector((state) => state.navList);
   const { currency } = useSelector((state) => state.currency);
+  const { cartItemList } = useSelector((state) => state.cart);
 
   const [show, setShow] = useState(false);
   const [SignInModal, setSignInModal] = useState(false);
@@ -129,7 +130,6 @@ const NavbarPrimary = () => {
                         src={`/assets/images/logo.webp`}
                         alt=".."
                         layout="fill"
-                        // objectFit='cover'
                       />
                     </a>
                   </Link>
@@ -168,12 +168,12 @@ const NavbarPrimary = () => {
                 </li>
                 <li className="nav-item">
                   <NavLink
-                    href="/cart/CartPage"
+                    href="/cart"
                     className="link-white px-3 cursor-pointer position-relative"
                   >
                     <i className="mdi mdi-24px mdi-cart-outline" />
                     <span className="badge rounded-circle bg-danger text-white position-absolute end-0 m-1">
-                      <small>1</small>
+                      <small>{cartItemList?.length> 0 ? cartItemList.length : 0 }</small>
                     </span>
                   </NavLink>
                 </li>
@@ -257,7 +257,7 @@ const NavbarPrimary = () => {
               </div>
             </li>
             <li className="nav-item py-1 py-md-0">
-              <Link href="/cart/CheckoutPage">
+              <Link href="/cart/checkout">
                 <a className="d-flex align-items-center">
                   <span className="text-uppercase small">Checkout</span>
                 </a>
@@ -323,7 +323,7 @@ const NavbarPrimary = () => {
             <div className="d-none d-md-flex">
               <ul className="nav">
                 <li className="nav-item">
-                  <Link href="/cart/CheckoutPage">
+                  <Link href="/cart/checkout">
                     <a className="d-flex align-items-center">
                       <span className="text-uppercase me-1">Checkout</span>
                       <i className="mdi mdi-exit-to-app fs-5"></i>

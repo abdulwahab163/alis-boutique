@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 import CounterComponent from "../../../components/CounterComponent";
 import SelectColor from "../../../components/SelectColor";
 import SelectSize from "../../../components/SelectSize";
+import { addCartItem } from "../../../store/actions/cart";
 
 const DetailDataSection = ({ product }) => {
-  const [selectedProduct, setSelectedProduct] = useState({ size: {}, count:1 });
+  const dispatch = useDispatch();
+
+  const [selectedProduct, setSelectedProduct] = useState({
+    size: {},
+    count: 1,
+    color: {},
+  });
 
   useEffect(() => {
     if (product) {
@@ -14,6 +22,7 @@ const DetailDataSection = ({ product }) => {
         name: product.name,
         id: product.id,
         price: product.price,
+        images: product.productFiles,
       });
     }
   }, []);
@@ -27,7 +36,7 @@ const DetailDataSection = ({ product }) => {
   };
 
   return (
-    <form noValidate className="mt-4">
+    <div className="mt-4">
       <ul className="nav flex-column gap-4">
         <li>
           <ul className="nav flex-column gap-2">
@@ -95,7 +104,7 @@ const DetailDataSection = ({ product }) => {
         <li>
           <div>
             <div className="mb-2 fw-500">
-              {product.stock > 0 ? "in stock" : "out of stock"}
+              {product.stock > 0 ? <span className="text-success">in stock</span> : <span className="text-danger">out of stock</span>}
             </div>
             <ul className="nav row gy-3">
               <li className="col-6 col-xxl-5">
@@ -106,8 +115,12 @@ const DetailDataSection = ({ product }) => {
               </li>
               <li className="col-6 col-xxl-5">
                 <button
-                  type="submit"
+                  type="button"
                   className="btn btn-primary shadow-1 w-100 h-100 rounded-pill py-2"
+                  onClick={() => {
+                    dispatch(addCartItem(selectedProduct))
+
+                  }}
                 >
                   Add to cart
                 </button>
@@ -116,7 +129,7 @@ const DetailDataSection = ({ product }) => {
           </div>
         </li>
       </ul>
-    </form>
+    </div>
   );
 };
 
