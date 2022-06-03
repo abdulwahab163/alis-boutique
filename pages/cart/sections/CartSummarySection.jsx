@@ -36,7 +36,7 @@ const CartSummarySection = ({ isPage }) => {
                   <ul className='nav row row-cols-2 row-cols-md-3'>
                     {listOfCards.map((item) => (
                       <li key={item.src}>
-                        <button type='button' className='btn'>
+                        <button type='button' className='btn position-relative'>
                           <Image
                             src={`/assets/images/cards/${item.src}`}
                             alt='..'
