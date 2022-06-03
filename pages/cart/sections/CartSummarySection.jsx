@@ -6,14 +6,7 @@ import Image from 'next/image';
 const CartSummarySection = ({ isPage }) => {
   const [edit, setEdit] = React.useState('');
 
-  const listOfCards = [
-    { src: 'Paypal.png' },
-    { src: 'Visa.png' },
-    { src: 'Master-card.png' },
-    { src: 'Maestro.png' },
-    { src: 'Discover.png' },
-    { src: 'iDEAL.png' },
-  ];
+  const listOfCards = [{ src: 'stripe.svg' }, { src: 'visa.svg' }];
 
   const AddressList = [
     { value: 'Beatrice Waddle' },
@@ -36,7 +29,10 @@ const CartSummarySection = ({ isPage }) => {
                   <ul className='nav row row-cols-2 row-cols-md-3'>
                     {listOfCards.map((item) => (
                       <li key={item.src}>
-                        <button type='button' className='btn position-relative'>
+                        <button
+                          type='button'
+                          className='btn position-relative image-size-very-small'
+                        >
                           <Image
                             src={`/assets/images/cards/${item.src}`}
                             alt='..'

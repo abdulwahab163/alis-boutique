@@ -58,7 +58,7 @@ const CartPage = () => {
       <section className=' mb-5'>
         <ContainerPrimary>
           <div className='row'>
-            <div className='col-12 col-md-12 col-lg-8 col-xxl-9 mt-4 mt-lg-0'>
+            <div className='col-12 mt-4 mt-lg-0'>
               <div className='steps-container'>
                 <header>
                   <div className='row gy-4 justify-content-between align-items-center'>
@@ -128,6 +128,7 @@ const CartPage = () => {
                       <Row className='mb-5 gy-3'>
                         {inputList.map((item) => (
                           <Form.Group
+                            key={item.name}
                             as={Col}
                             md='6'
                             controlId='validationCustom01'

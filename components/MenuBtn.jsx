@@ -40,13 +40,13 @@ const MenuBtn = ({ name, categories }) => {
                                 <>
                                   <li>
                                     <Link
-                                    href={{
-                                      pathname: "/products",
-                                      query: {
-                                        category: subItem.name,
-                                        id: subItem.id
-                                      }
-                                    }}
+                                      href={{
+                                        pathname: '/products',
+                                        query: {
+                                          category: subItem.name,
+                                          id: subItem.id,
+                                        },
+                                      }}
                                       onClick={() => setShow(false)}
                                     >
                                       <a className='text-capitalize'>
@@ -76,6 +76,7 @@ const MenuBtn = ({ name, categories }) => {
                           src={`${item.typeImage}`}
                           alt='..'
                           layout='fill'
+                          objectFit='contain'
                         />
                       </>
                     ))}
