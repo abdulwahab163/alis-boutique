@@ -1,7 +1,7 @@
 import React from 'react';
 import { Nav, Tab, Modal, Button } from 'react-bootstrap';
+
 import ContainerPrimary from '../../../components/Container';
-import DescriptionSection from './DescriptionSection';
 import ReviewsSection from './ReviewsSection';
 import Rating from 'react-rating';
 
@@ -71,6 +71,7 @@ const DetailTabs = () => {
                   </Nav.Item>
                 </Nav>
               </div>
+              <ReviewsSection />
             </Tab.Container>
           </ContainerPrimary>
         </div>

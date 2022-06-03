@@ -62,14 +62,6 @@ const ReviewsSection = () => {
               </div>
             </li>
           </ul>
-          <div className='mt-4 text-center'>
-            <button
-              type='button'
-              className='btn btn-primary shadow-1 rounded-pill py-3 px-5'
-            >
-              ADD OPINION
-            </button>
-          </div>
         </li>
         <li className='col-12 col-lg-6 col-xl-5'>
           <ul className='nav flex-column gap-4'>
