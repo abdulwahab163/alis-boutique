@@ -55,6 +55,14 @@ const DetailTabs = () => {
                 <Nav variant='pills' className='gap-4 justify-content-center '>
                   <Nav.Item>
                     <Nav.Link
+                      onClick={handleShow}
+                      className='btn py-3 px-5 btn-primary-1 rounded-pill'
+                    >
+                      Add Review
+                    </Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link
                       className='btn py-3 px-5 btn-primary-1 rounded-pill'
                       eventKey='review'
                     >
