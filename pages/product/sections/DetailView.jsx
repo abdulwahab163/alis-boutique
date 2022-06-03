@@ -1,4 +1,5 @@
 import React from "react";
+
 import ContainerPrimary from "../../../components/Container";
 import DetailDataSection from "./DetailDataSection";
 import DetailHeader from "./DetailHeader";

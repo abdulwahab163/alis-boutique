@@ -1,26 +1,28 @@
 import Image from "next/image";
 import React from "react";
 import { Table } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import CounterComponent from "../../../components/CounterComponent";
 import { removeCartItem } from "../../../store/actions/cart";
 
-const CartTable = ({ cartItemList }) => {
+const headList = [
+  { name: "Product" },
+  { name: "Color", center: true },
+  { name: "Size", center: true },
+  { name: "items", center: true },
+  { name: "Price", center: true },
+  {},
+];
+
+const CartTable = () => {
   const dispatch = useDispatch();
 
-  const headList = [
-    { name: "Product" },
-    { name: "Color", center: true },
-    { name: "Size", center: true },
-    { name: "items", center: true },
-    { name: "Price", center: true },
-    {},
-  ];
+  const { cartItemList } = useSelector((state) => state.cart);
 
   return (
     <div className="mt-4">
-      {cartItemList.length> 0 ? (
+      {cartItemList.length > 0 ? (
         <div className="dataTables_wrapper">
           <Table
             borderless
@@ -100,8 +102,10 @@ const CartTable = ({ cartItemList }) => {
             </tbody>
           </Table>
         </div>
-      ): (
-        <div className="d-flex justify-content-center"><h5>Cart is Empty</h5></div>
+      ) : (
+        <div className="d-flex justify-content-center">
+          <h5>Cart is Empty</h5>
+        </div>
       )}
     </div>
   );

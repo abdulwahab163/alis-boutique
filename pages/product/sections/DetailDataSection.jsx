@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { Button, ButtonGroup } from "react-bootstrap";
 
 import CounterComponent from "../../../components/CounterComponent";
-import SelectColor from "../../../components/SelectColor";
 import SelectSize from "../../../components/SelectSize";
 import { addCartItem } from "../../../store/actions/cart";
 
 const DetailDataSection = ({ product }) => {
   const dispatch = useDispatch();
 
+  const { currency } = useSelector((state) => state.currency);
+
   const [selectedProduct, setSelectedProduct] = useState({
     size: {},
     count: 1,
-    color: {},
+    color: "",
   });
 
   useEffect(() => {
@@ -33,6 +35,10 @@ const DetailDataSection = ({ product }) => {
 
   const setCount = (selectedCount) => {
     setSelectedProduct({ ...selectedProduct, count: selectedCount });
+  };
+
+  const setColor = (selectedColor) => {
+    setSelectedProduct({ ...selectedProduct, color: selectedColor });
   };
 
   return (
@@ -65,19 +71,19 @@ const DetailDataSection = ({ product }) => {
                 <span>
                   <h5 className="mb-0 fw-normal">
                     {product.saleDiscount ? (
-                      <span className="me-4 text-danger">
-                        {Math.floor(
+                      <span className="me-4">
+                       {currency} {Math.floor(
                           product.price -
                             (product.price / 100) * product.saleDiscount
                         )}
                       </span>
                     ) : (
-                      <span className="me-4 text-danger">
-                        {Math.floor(product.price - product.discount)}
+                      <span className="me-4">
+                       {currency} {Math.floor(product.price - product.discount)}
                       </span>
                     )}
                     <span className="text-black-50 text-decoration-line-through">
-                      {product.price}
+                    {currency} {product.price}
                     </span>
                   </h5>
                 </span>
@@ -85,12 +91,27 @@ const DetailDataSection = ({ product }) => {
             </li>
           </ul>
         </li>
-        <li>
-          <div>
-            <div className="mb-2 fw-500">Color:</div>
-            <SelectColor />
-          </div>
-        </li>
+        {product?.color && (
+          <li>
+            <div>
+              <div className="mb-2 fw-500">Color:</div>
+              <ButtonGroup className="flex-wrap">
+                {product.color.split(",").map((item, i) => (
+                  <Button
+                    key={i}
+                    variant="outline-primary"
+                    className={`text-uppercase border border-light ${
+                      selectedProduct.color === item && "bg-primary text-white"
+                    }`}
+                    onClick={() => setColor(item)}
+                  >
+                    {item}
+                  </Button>
+                ))}
+              </ButtonGroup>
+            </div>
+          </li>
+        )}
         <li>
           <div>
             <div className="mb-2 fw-500">Size:</div>
@@ -104,7 +125,11 @@ const DetailDataSection = ({ product }) => {
         <li>
           <div>
             <div className="mb-2 fw-500">
-              {product.stock > 0 ? <span className="text-success">in stock</span> : <span className="text-danger">out of stock</span>}
+              {product.stock > 0 ? (
+                <span className="text-success">in stock</span>
+              ) : (
+                <span className="text-danger">out of stock</span>
+              )}
             </div>
             <ul className="nav row gy-3">
               <li className="col-6 col-xxl-5">
@@ -117,9 +142,9 @@ const DetailDataSection = ({ product }) => {
                 <button
                   type="button"
                   className="btn btn-primary shadow-1 w-100 h-100 rounded-pill py-2"
+                  disabled={!selectedProduct.color || !selectedProduct.size.name}
                   onClick={() => {
-                    dispatch(addCartItem(selectedProduct))
-
+                    dispatch(addCartItem(selectedProduct));
                   }}
                 >
                   Add to cart

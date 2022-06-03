@@ -1,5 +1,6 @@
 import React from 'react';
 import { Breadcrumb } from 'react-bootstrap';
+
 import { NavLink } from '../../../components/NavLink';
 
 const DetailHeader = () => {

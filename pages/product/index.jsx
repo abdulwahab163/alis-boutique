@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
 
 import SelectedAds from "../../components/SelectedAds";
 import DetailTabs from "./sections/DetailTabs";
