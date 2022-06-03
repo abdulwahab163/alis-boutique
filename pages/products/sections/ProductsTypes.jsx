@@ -1,7 +1,7 @@
 import React from 'react';
 import TypeCard from '../../../components/TypeCard';
 
-const ProductsTypes = () => {
+const ProductsTypes = ({pageTitle}) => {
   const list = [
     {
       imageUrl:
@@ -32,7 +32,7 @@ const ProductsTypes = () => {
 
   return (
     <div className='px-0 mx-auto col-12 col-sm-11 col-md-9 col-xl-8 col-xxl-7'>
-      <h2 className='mb-3 text-center text-capitalize'>Summer 22,</h2>
+      <h2 className='mb-3 text-center text-capitalize'>{pageTitle}</h2>
       <ul className='nav justify-content-center gap-4'>
         {list.map((item) => (
           <li key={item.title}>

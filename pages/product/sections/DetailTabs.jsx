@@ -52,47 +52,16 @@ const DetailTabs = () => {
           <ContainerPrimary>
             <Tab.Container defaultActiveKey='review'>
               <div>
-                <div>
-                  <Nav
-                    variant='pills'
-                    className='gap-4 justify-content-center '
-                  >
-                    {/* <Nav.Item>
+                <Nav variant='pills' className='gap-4 justify-content-center '>
+                  <Nav.Item>
                     <Nav.Link
                       className='btn py-3 px-5 btn-primary-1 rounded-pill'
-                      eventKey='description'
+                      eventKey='review'
                     >
-                      Description
+                      Reviews (2)
                     </Nav.Link>
-                  </Nav.Item> */}
-                    <Nav.Item>
-                      <Nav.Link
-                        className='btn py-3 px-5 btn-primary-1 rounded-pill'
-                        onClick={handleShow}
-                      >
-                        Add Review
-                      </Nav.Link>
-                    </Nav.Item>
-                    <Nav.Item>
-                      <Nav.Link
-                        className='btn py-3 px-5 btn-primary-1 rounded-pill'
-                        eventKey='review'
-                      >
-                        Reviews (2)
-                      </Nav.Link>
-                    </Nav.Item>
-                  </Nav>
-                </div>
-                <div>
-                  <Tab.Content>
-                    <Tab.Pane eventKey='description'>
-                      <DescriptionSection />
-                    </Tab.Pane>
-                    <Tab.Pane eventKey='review'>
-                      <ReviewsSection />
-                    </Tab.Pane>
-                  </Tab.Content>
-                </div>
+                  </Nav.Item>
+                </Nav>
               </div>
             </Tab.Container>
           </ContainerPrimary>

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-const MenuBtn = ({ name, categories, subCategories }) => {
+const MenuBtn = ({ name, categories }) => {
   const [check, setCheck] = useState('');
   const [show, setShow] = useState(false);
 
@@ -28,7 +28,7 @@ const MenuBtn = ({ name, categories, subCategories }) => {
               <div className='col-6 col-md'>
                 <div>
                   <ul className='nav row row-cols-1 row-cols-sm-2 row-cols-lg-4 row-cols-xl-6 gy-3'>
-                    {categories.map((item) => (
+                    {categories?.map((item) => (
                       <>
                         <li onMouseEnter={() => setCheck(item.typeImage)}>
                           <h6 className='d-inline-block mb-2 pb-1 text-uppercase fw-normal border-bottom border-primary'>
@@ -36,15 +36,21 @@ const MenuBtn = ({ name, categories, subCategories }) => {
                           </h6>
                           <div>
                             <ul className='nav flex-column gap-1'>
-                              {subCategories.map((item) => (
+                              {item?.subCategories?.map((subItem) => (
                                 <>
                                   <li>
                                     <Link
-                                      href='/products/ProductsPage'
+                                    href={{
+                                      pathname: "/products",
+                                      query: {
+                                        category: subItem.name,
+                                        id: subItem.id
+                                      }
+                                    }}
                                       onClick={() => setShow(false)}
                                     >
                                       <a className='text-capitalize'>
-                                        {item.item}
+                                        {subItem.name}
                                       </a>
                                     </Link>
                                   </li>
@@ -61,7 +67,7 @@ const MenuBtn = ({ name, categories, subCategories }) => {
               <div className='col-6 col-md-4 col-xl-3'>
                 <div className='sticky-top'>
                   <div className='height-size-2 position-relative'>
-                    {categories.map((item) => (
+                    {categories?.map((item) => (
                       <>
                         <Image
                           className={`d-block h-100 w-100 ${

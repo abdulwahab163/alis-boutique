@@ -55,7 +55,7 @@ const SelectedAds = () => {
             <h4 className='mb-0 me-auto fw-500 text-capitalize'>
               new arrivals
             </h4>
-            <Link href='/products/ProductsPage'>
+            <Link href='/products/productsPage'>
               <a>Show more</a>
             </Link>
           </div>

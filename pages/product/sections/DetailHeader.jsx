@@ -11,7 +11,7 @@ const DetailHeader = () => {
             <NavLink href='/'>Home</NavLink>
           </Breadcrumb.Item>
           <Breadcrumb.Item>
-            <NavLink href='/products/ProductsPage'>All products</NavLink>
+            <NavLink href='/products/productsPage'>All products</NavLink>
           </Breadcrumb.Item>
           <Breadcrumb.Item>
             <NavLink href='/detail/DetailPage'>Detail</NavLink>
