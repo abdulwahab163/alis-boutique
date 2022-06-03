@@ -35,7 +35,7 @@ const ProductsPage = () => {
                   <NavLink href="/">Home</NavLink>
                 </Breadcrumb.Item>
                 <Breadcrumb.Item>
-                  <NavLink href="/products/productsPage">All products</NavLink>
+                  <NavLink href="/">All products</NavLink>
                 </Breadcrumb.Item>
               </Breadcrumb>
             </div>

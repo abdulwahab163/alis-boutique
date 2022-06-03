@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const TypeCard = ({ imageUrl, title }) => {
   return (
-    <Link href='/products/productsPage'>
+    <Link href='/'>
       <a className='d-inline-block text-center'>
         <div className='d-flex align-items-center mb-2'>
           <span className='d-block image-size-small mx-auto shadow-sm rounded-circle position-relative'>

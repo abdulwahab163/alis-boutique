@@ -82,7 +82,7 @@ const DetailDataSection = ({ product }) => {
                        {currency} {Math.floor(product.price - product.discount)}
                       </span>
                     )}
-                    <span className="text-black-50 text-decoration-line-through">
+                    <span className="text-danger text-decoration-line-through">
                     {currency} {product.price}
                     </span>
                   </h5>
