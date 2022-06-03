@@ -23,7 +23,7 @@ const CartPage = () => {
   const { cartItemList } = useSelector((state) => state.cart);
 
   const [formData, setFormData] = useState({});
-  const [page, setPage] = useState(2);
+  const [page, setPage] = useState(1);
 
   const goNextPage = () => {
     setPage((page) => page + 1);
