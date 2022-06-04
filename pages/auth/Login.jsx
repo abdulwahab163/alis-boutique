@@ -1,19 +1,12 @@
 import React from 'react';
 
-const SignIn = ({ onClickSignUp, onClickForgotPassword }) => {
+const Login = ({ onClickSignUp, onClickForgotPassword }) => {
   return (
     <form noValidate>
       <ul className='nav flex-column gap-4'>
         <li>
           <div className='text-center'>
             <h5 className='mb-2 fw-normal'>Log in</h5>
-            <p className='mb-0 text-black-50'>
-              <small>
-                {' '}
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry.
-              </small>
-            </p>
           </div>
         </li>
         <li>
@@ -96,4 +89,4 @@ const SignIn = ({ onClickSignUp, onClickForgotPassword }) => {
   );
 };
 
-export default SignIn;
+export default Login;
