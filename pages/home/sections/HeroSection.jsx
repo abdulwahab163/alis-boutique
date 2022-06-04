@@ -47,9 +47,8 @@ const HeroSection = () => {
             disableOnInteraction: false,
           }}
         >
-          {list.map((item) => (
-            <>
-              <SwiperSlide>
+          {list.map((item,index) => (
+              <SwiperSlide key={index}>
                 <Link href='/'>
                   <a
                     style={{
@@ -77,7 +76,6 @@ const HeroSection = () => {
                   </a>
                 </Link>
               </SwiperSlide>
-            </>
           ))}
         </Swiper>
       </div>

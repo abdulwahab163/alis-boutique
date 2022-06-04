@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import Image from "next/image";
 // logo
-import { ReactComponent as Logo } from "../assets/logo.svg";
+import ReactComponent from "../assets/logo.svg";
 import { NavLink } from "./NavLink";
 import SearchComponent from "./SearchComponent";
 import MenuBtn from "./MenuBtn";
@@ -43,15 +43,18 @@ const NavbarPrimary = () => {
   const handleLoginShow = () => {
     dispatch(setLoginModal(true));
     dispatch(setSignUpModal(false));
+    dispatch(setForgetPasswordModal(false));
   };
 
   const handleSignUpClose = () => dispatch(setSignUpModal(false));
   const handleSignUpShow = () => {
     dispatch(setLoginModal(false));
     dispatch(setSignUpModal(true));
+    dispatch(setForgetPasswordModal(false));
   };
 
-  const handleForgotPasswordClose = () => dispatch(setForgetPasswordModal(false));
+  const handleForgotPasswordClose = () =>
+    dispatch(setForgetPasswordModal(false));
   const handleForgotPasswordShow = () => {
     dispatch(setSignUpModal(false));
     dispatch(setLoginModal(false));
@@ -85,8 +88,14 @@ const NavbarPrimary = () => {
       <AuthModal show={signUpModalVisible} onHide={handleSignUpClose}>
         <SignUp onClickLogin={handleLoginShow} />
       </AuthModal>
-      <AuthModal show={forgetPasswordModalVisible} onHide={handleForgotPasswordClose}>
-        <ForgotPassword />
+      <AuthModal
+        show={forgetPasswordModalVisible}
+        onHide={handleForgotPasswordClose}
+      >
+        <ForgotPassword
+          onClickLogin={handleLoginShow}
+          onClickSignUp={handleSignUpShow}
+        />
       </AuthModal>
       {/* /Auth Modal */}
 
@@ -158,7 +167,7 @@ const NavbarPrimary = () => {
                       id="currencies"
                       className="form-select form-select-sm bg-black text-white arrow-white"
                       name="currency"
-                      valau={currency}
+                      value={currency}
                       onChange={(e) => {
                         dispatch(setCurrency(e.target.value));
                       }}
@@ -207,41 +216,39 @@ const NavbarPrimary = () => {
               </a>
             </li> */}
             <li className="nav-item py-1 py-md-0">
-              <li className="nav-item py-1 py-md-0">
-                {login ? (
-                  <Dropdown className="dropdown-remove-arrow dropdown-sign">
-                    <Dropdown.Toggle variant="...">
-                      <button className="btn p-0 btn-icon border border-2 rounded-circle">
-                        <span className="btn-icon-1 rounded-circle position-relative">
-                          <Image
-                            src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auhref=format&fit=crop&w=580&q=80"
-                            alt=".."
-                            layout="fill"
-                            className="rounded-circle"
-                          />
-                        </span>
-                      </button>
-                    </Dropdown.Toggle>
+              {login ? (
+                <Dropdown className="dropdown-remove-arrow dropdown-sign">
+                  <Dropdown.Toggle variant="...">
+                    <button className="btn p-0 btn-icon border border-2 rounded-circle">
+                      <span className="btn-icon-1 rounded-circle position-relative">
+                        <Image
+                          src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auhref=format&fit=crop&w=580&q=80"
+                          alt=".."
+                          layout="fill"
+                          className="rounded-circle"
+                        />
+                      </span>
+                    </button>
+                  </Dropdown.Toggle>
 
-                    <Dropdown.Menu className="shadow-1 rounded-md">
-                      <Dropdown.Item as={NavLink} href="/profile/ProfilePage">
-                        Profile
-                      </Dropdown.Item>
-                      <Dropdown.Item as={NavLink} href="/settings">
-                        Settings
-                      </Dropdown.Item>
-                      <Dropdown.Divider />
-                      <Dropdown.Item onClick={() => setLogin(!login)}>
-                        Log Out
-                      </Dropdown.Item>
-                    </Dropdown.Menu>
-                  </Dropdown>
-                ) : (
-                  <a onClick={handleLoginShow} className="px-1 cursor-pointer">
-                    <i className="mdi mdi-account-outline fs-4"></i>
-                  </a>
-                )}
-              </li>
+                  <Dropdown.Menu className="shadow-1 rounded-md">
+                    <Dropdown.Item as={NavLink} href="/profile/ProfilePage">
+                      Profile
+                    </Dropdown.Item>
+                    <Dropdown.Item as={NavLink} href="/settings">
+                      Settings
+                    </Dropdown.Item>
+                    <Dropdown.Divider />
+                    <Dropdown.Item onClick={() => setLogin(!login)}>
+                      Log Out
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              ) : (
+                <a onClick={handleLoginShow} className="px-1 cursor-pointer">
+                  <i className="mdi mdi-account-outline fs-4"></i>
+                </a>
+              )}
             </li>
             <li className="nav-item py-1 py-md-0">
               <SearchComponent />
@@ -251,15 +258,17 @@ const NavbarPrimary = () => {
                 <select
                   id="currencies"
                   className="form-select form-select-sm bg-transparent border-0"
-                  name="currencies"
+                  name="currency"
+                  value={currency}
+                  onChange={(e) => {
+                    dispatch(setCurrency(e.target.value));
+                  }}
                 >
-                  <option value="PKR" selected="selected">
-                    PKR
-                  </option>
-
-                  <option value="GBP">GBP</option>
-
-                  <option value="USD">USD</option>
+                  {["PKR", "USD"].map((item, index) => (
+                    <option key={index} value={item}>
+                      {item}
+                    </option>
+                  ))}
                 </select>
               </div>
             </li>
@@ -319,8 +328,8 @@ const NavbarPrimary = () => {
             {/* Desktop list */}
             <div className="me-auto">
               <ul className="nav justify-content-center align-items-center">
-                {getNav()?.map((item) => (
-                  <li key={"menu"} className="nav-item">
+                {getNav()?.map((item, index) => (
+                  <li key={index} className="nav-item">
                     <MenuBtn name={item.name} categories={item.categories} />
                   </li>
                 ))}
@@ -349,8 +358,8 @@ const NavbarPrimary = () => {
             <Offcanvas.Title className="w-100 d-flex align-items-center justify-content-between">
               <div className="logo-container">
                 <Link href="/" className="d-flex align-items-end link-white">
-                  <Logo />
-                  <span className="ms-3 h4 mb-0">E-Shop</span>
+                  <ReactComponent />
+                  <span className="ms-3 h4 mb-0">Ali's Boutique</span>
                 </Link>
               </div>
               <button
@@ -362,8 +371,8 @@ const NavbarPrimary = () => {
           </Offcanvas.Header>
           <Offcanvas.Body className="bg-gray">
             <ul className="nav flex-column">
-              {getNav()?.map((item) => (
-                <li key={"menu"} className="nav-item">
+              {getNav()?.map((item, index) => (
+                <li key={index} className="nav-item">
                   <div className="d-flex align-items-center">
                     <i className="mdi mdi-18px mdi-amazon-alexa" />
                     <MenuBtn name={item.name} />

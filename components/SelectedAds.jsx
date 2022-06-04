@@ -81,12 +81,10 @@ const SelectedAds = () => {
                 },
               }}
             >
-              {list.map((item) => (
-                <>
-                  <SwiperSlide>
+              {list.map((item,index) => (
+                  <SwiperSlide key={index}>
                     <ProductCard className='height-size-3' item={item} />
                   </SwiperSlide>
-                </>
               ))}
             </Swiper>
           </div>
