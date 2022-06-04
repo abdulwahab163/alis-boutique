@@ -1,4 +1,5 @@
 import Head from 'next/head';
+
 import SelectedAds from '../components/SelectedAds';
 import HeroSection from '../pages/home/sections/HeroSection';
 import OurDealSection from './home/sections/OurDealSection';

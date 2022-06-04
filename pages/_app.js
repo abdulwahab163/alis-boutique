@@ -13,15 +13,16 @@ import "swiper/css/free-mode";
 import "swiper/css/thumbs";
 
 import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 
-import { wrapper, store } from "../store/store";
+import { wrapper, store, persistor } from "../store/store";
 import NavbarPrimary from "../components/NavbarPrimary";
 import FooterPrimary from "../components/FooterPrimary";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <>
-      <Provider store={store}>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
         <main className="d-flex flex-column min-vh-100 container-xxxl">
           <NavbarPrimary />
           <div className="flex-fill pt-3">
@@ -29,8 +30,8 @@ function MyApp({ Component, pageProps }) {
           </div>
           <FooterPrimary />
         </main>
-      </Provider>
-    </>
+      </PersistGate>
+    </Provider>
   );
 }
 
