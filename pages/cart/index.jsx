@@ -21,6 +21,7 @@ const inputList = [
 
 const CartPage = () => {
   const { cartItemList } = useSelector((state) => state.cart);
+  const { currency } = useSelector((state) => state.currency);
 
   const [userData, setUserData] = useState({});
   const [page, setPage] = useState(1);
@@ -52,6 +53,14 @@ const CartPage = () => {
     updatedData[name] = value;
     setUserData({ ...updatedData });
   };
+
+  const getTotalPrice= ()=> {
+    let price = 0
+    cartItemList.forEach(item=> {
+      price += item.price
+    })
+    return price
+  }
 
   return (
     <main className='h-100'>
@@ -173,11 +182,11 @@ const CartPage = () => {
                     <div className='flex-fill'>
                       {page === 1 && (
                         <div className='nav align-items-center w-100'>
-                          <div className='me-auto'>
-                            <span className='text-black-50 me-4'>
+                          <div className='d-flex '>
+                            <div className='text-black-50 me-4'>
                               Total cost
-                            </span>
-                            <span>$159.98</span>
+                            </div>
+                            <div>{currency}&nbsp;&nbsp;{getTotalPrice()}</div>
                           </div>
                         </div>
                       )}

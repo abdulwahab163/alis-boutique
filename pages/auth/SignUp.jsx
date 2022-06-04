@@ -9,13 +9,6 @@ const SignUp = ({ onClickSignIn }) => {
             <h5 className='mb-2 fw-normal'>
               Create an account and discover the benefits
             </h5>
-            <p className='mb-0 text-black-50'>
-              <small>
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industrys standard dummy text
-                ever since the 1500s
-              </small>
-            </p>
           </div>
         </li>
         <li>

@@ -8,12 +8,17 @@ import { ReactComponent as Logo } from "../assets/logo.svg";
 import { NavLink } from "./NavLink";
 import SearchComponent from "./SearchComponent";
 import MenuBtn from "./MenuBtn";
-import AuthModal from "../pages/auth/AuthModal";
-import SignIn from "../pages/auth/SignIn";
+import AuthModal from "../components/AuthModal";
+import Login from "../pages/auth/Login";
 import ForgotPassword from "../pages/auth/ForgotPassword";
 import SignUp from "../pages/auth/SignUp";
 import { getNavList } from "../store/actions/navList";
 import { setCurrency } from "../store/actions/currency";
+import {
+  setSignUpModal,
+  setLoginModal,
+  setForgetPasswordModal,
+} from "../store/actions/auth";
 
 const NavbarPrimary = () => {
   const dispatch = useDispatch();
@@ -21,11 +26,10 @@ const NavbarPrimary = () => {
   const { navList } = useSelector((state) => state.navList);
   const { currency } = useSelector((state) => state.currency);
   const { cartItemList } = useSelector((state) => state.cart);
+  const { signUpModalVisible, loginModalVisible, forgetPasswordModalVisible } =
+    useSelector((state) => state.auth);
 
   const [show, setShow] = useState(false);
-  const [SignInModal, setSignInModal] = useState(false);
-  const [SignUpModal, setSignUpModal] = useState(false);
-  const [ForgotPasswordModal, setForgotPasswordModal] = useState(false);
   const [login, setLogin] = useState(false);
 
   useEffect(() => {
@@ -35,23 +39,23 @@ const NavbarPrimary = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const handleSignInClose = () => setSignInModal(false);
-  const handleSignInShow = () => {
-    setSignInModal(true);
-    setSignUpModal(false);
+  const handleLoginClose = () => dispatch(setLoginModal(false));
+  const handleLoginShow = () => {
+    dispatch(setLoginModal(true));
+    dispatch(setSignUpModal(false));
   };
 
-  const handleSignUpClose = () => setSignUpModal(false);
+  const handleSignUpClose = () => dispatch(setSignUpModal(false));
   const handleSignUpShow = () => {
-    setSignInModal(false);
-    setSignUpModal(true);
+    dispatch(setLoginModal(false));
+    dispatch(setSignUpModal(true));
   };
 
-  const handleForgotPasswordClose = () => setForgotPasswordModal(false);
+  const handleForgotPasswordClose = () => dispatch(setForgetPasswordModal(false));
   const handleForgotPasswordShow = () => {
-    setSignUpModal(false);
-    setSignInModal(false);
-    setForgotPasswordModal(true);
+    dispatch(setSignUpModal(false));
+    dispatch(setLoginModal(false));
+    dispatch(setForgetPasswordModal(true));
   };
 
   const getNav = () => {
@@ -72,16 +76,16 @@ const NavbarPrimary = () => {
   return (
     <>
       {/* Auth Modal */}
-      <AuthModal show={SignInModal} onHide={handleSignInClose}>
-        <SignIn
+      <AuthModal show={loginModalVisible} onHide={handleLoginClose}>
+        <Login
           onClickSignUp={handleSignUpShow}
           onClickForgotPassword={handleForgotPasswordShow}
         />
       </AuthModal>
-      <AuthModal show={SignUpModal} onHide={handleSignUpClose}>
-        <SignUp onClickSignIn={handleSignInShow} />
+      <AuthModal show={signUpModalVisible} onHide={handleSignUpClose}>
+        <SignUp onClickLogin={handleLoginShow} />
       </AuthModal>
-      <AuthModal show={ForgotPasswordModal} onHide={handleForgotPasswordClose}>
+      <AuthModal show={forgetPasswordModalVisible} onHide={handleForgotPasswordClose}>
         <ForgotPassword />
       </AuthModal>
       {/* /Auth Modal */}
@@ -156,7 +160,8 @@ const NavbarPrimary = () => {
                       name="currency"
                       valau={currency}
                       onChange={(e) => {
-                        dispatch(setCurrency(e.target.value))}}
+                        dispatch(setCurrency(e.target.value));
+                      }}
                     >
                       {["PKR", "USD"].map((item, index) => (
                         <option key={index} value={item}>
@@ -173,7 +178,9 @@ const NavbarPrimary = () => {
                   >
                     <i className="mdi mdi-24px mdi-cart-outline" />
                     <span className="badge rounded-circle bg-danger text-white position-absolute end-0 m-1">
-                      <small>{cartItemList?.length> 0 ? cartItemList.length : 0 }</small>
+                      <small>
+                        {cartItemList?.length > 0 ? cartItemList.length : 0}
+                      </small>
                     </span>
                   </NavLink>
                 </li>
@@ -230,7 +237,7 @@ const NavbarPrimary = () => {
                     </Dropdown.Menu>
                   </Dropdown>
                 ) : (
-                  <a onClick={handleSignInShow} className="px-1 cursor-pointer">
+                  <a onClick={handleLoginShow} className="px-1 cursor-pointer">
                     <i className="mdi mdi-account-outline fs-4"></i>
                   </a>
                 )}
@@ -301,7 +308,7 @@ const NavbarPrimary = () => {
                     <button
                       type="button"
                       className="btn p-0"
-                      onClick={handleSignInShow}
+                      onClick={handleLoginShow}
                     >
                       <i className="mdi mdi-account-outline fs-3"></i>
                     </button>

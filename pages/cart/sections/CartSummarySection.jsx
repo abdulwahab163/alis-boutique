@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -17,15 +18,26 @@ const addressList = [
 ];
 
 const CartSummarySection = ({ isPage, userData }) => {
+  const { cartItemList } = useSelector((state) => state.cart);
+  const { currency } = useSelector((state) => state.currency);
+
   const [editable, setEditable] = useState(false);
   const [delieveryData, setDelieveryData] = useState();
 
   useEffect(() => {
-    console.log('userData', userData)
+    console.log("userData", userData);
     if (userData) {
       setDelieveryData(userData);
     }
   }, []);
+
+  const getTotalPrice = () => {
+    let price = 0;
+    cartItemList.forEach((item) => {
+      price += item.price;
+    });
+    return price;
+  };
 
   return (
     <section>
@@ -78,7 +90,7 @@ const CartSummarySection = ({ isPage, userData }) => {
                             placeholder={item.placeholder}
                             type={item.name === "phoneNo" ? "number" : "text"}
                             className="form-control form-control-sm"
-                            value={delieveryData[item.name]}
+                            value={delieveryData && delieveryData[item.name]}
                             onChange={(e) => {
                               const { name, value } = e.target;
 
@@ -90,7 +102,7 @@ const CartSummarySection = ({ isPage, userData }) => {
                             }}
                           />
                         ) : (
-                          <>{delieveryData[item.name]}</>
+                          <>{delieveryData && delieveryData[item.name]}</>
                         )}
                       </li>
                     ))}
@@ -118,7 +130,9 @@ const CartSummarySection = ({ isPage, userData }) => {
                 <li>
                   <div className="bg-light bg-opacity-50 p-3 text-center">
                     <span className="me-4">Total cost</span>
-                    <span className="fw-bold">$159.98</span>
+                    <span className="fw-bold">
+                      {currency}&nbsp;&nbsp;{getTotalPrice()}
+                    </span>
                   </div>
                 </li>
                 {isPage && (
