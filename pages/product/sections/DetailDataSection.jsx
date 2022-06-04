@@ -6,10 +6,11 @@ import CounterComponent from "../../../components/CounterComponent";
 import SelectSize from "../../../components/SelectSize";
 import { addCartItem } from "../../../store/actions/cart";
 
-const DetailDataSection = ({ product }) => {
+const DetailDataSection = () => {
   const dispatch = useDispatch();
 
   const { currency } = useSelector((state) => state.currency);
+  const { product } = useSelector((state) => state.products);
 
   const [selectedProduct, setSelectedProduct] = useState({
     size: {},

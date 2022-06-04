@@ -11,8 +11,6 @@ const DetailPage = () => {
   const router = useRouter();
   const dispatch = useDispatch()
 
-  const { product } = useSelector((state) => state.products);
-
   useEffect(() => {
     if(router.query.id) {
       dispatch(getProduct(router.query.id));
@@ -22,7 +20,7 @@ const DetailPage = () => {
 
   return (
     <main className="h-100">
-      <DetailView product={product} />
+      <DetailView />
       <DetailTabs />
       <SelectedAds />
     </main>

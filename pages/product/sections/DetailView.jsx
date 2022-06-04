@@ -1,11 +1,15 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 import ContainerPrimary from "../../../components/Container";
 import DetailDataSection from "./DetailDataSection";
 import DetailHeader from "./DetailHeader";
 import DetailThumbsSection from "./DetailThumbsSection";
 
-const DetailView = ({ product }) => {
+const DetailView = () => {
+
+  const { product } = useSelector((state) => state.products);
+
   return (
     <section className=" mb-5">
       <div>
@@ -19,7 +23,7 @@ const DetailView = ({ product }) => {
                 description={product.description}
               />
               <div>
-                <DetailDataSection product={product} />
+                <DetailDataSection/>
               </div>
             </div>
             {/* /Detail */}

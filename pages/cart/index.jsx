@@ -22,8 +22,8 @@ const inputList = [
 const CartPage = () => {
   const { cartItemList } = useSelector((state) => state.cart);
 
-  const [formData, setFormData] = useState({});
-  const [page, setPage] = useState(3);
+  const [userData, setUserData] = useState({});
+  const [page, setPage] = useState(1);
 
   const goNextPage = () => {
     setPage((page) => page + 1);
@@ -36,7 +36,7 @@ const CartPage = () => {
   const validateAddress = () => {
     let isValid = true;
     inputList.forEach((item) => {
-      if (!formData[item.name]) {
+      if (!userData[item.name]) {
         isValid = true;
       }
     });
@@ -48,9 +48,9 @@ const CartPage = () => {
 
     if (name === 'postalCode' && value < 1) return;
 
-    let updatedData = { ...formData };
+    let updatedData = { ...userData };
     updatedData[name] = value;
-    setFormData({ ...updatedData });
+    setUserData({ ...updatedData });
   };
 
   return (
@@ -136,10 +136,10 @@ const CartPage = () => {
                             <Form.Label>{item.label}</Form.Label>
                             {item.isCountry ? (
                               <CountrySelect
-                                value={formData.country}
+                                value={userData.country}
                                 onChange={(value) => {
-                                  setFormData({
-                                    ...formData,
+                                  setUserData({
+                                    ...userData,
                                     country: value,
                                   });
                                 }}
@@ -165,7 +165,7 @@ const CartPage = () => {
                       </Row>
                     </section>
                   )}
-                  {page === 3 && <CartSummarySection />}
+                  {page === 3 && <CartSummarySection userData={userData} />}
                 </div>
 
                 {cartItemList.length > 0 && (

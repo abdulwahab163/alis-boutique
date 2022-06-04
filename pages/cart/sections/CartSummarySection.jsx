@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -16,9 +16,16 @@ const addressList = [
   { label: "Contact No", name: "phoneNo", placeholder: "Enter Contact No" },
 ];
 
-const CartSummarySection = ({ isPage }) => {
+const CartSummarySection = ({ isPage, userData }) => {
   const [editable, setEditable] = useState(false);
-  const [delieveryData, setDelieveryData] = useState({});
+  const [delieveryData, setDelieveryData] = useState();
+
+  useEffect(() => {
+    console.log('userData', userData)
+    if (userData) {
+      setDelieveryData(userData);
+    }
+  }, []);
 
   return (
     <section>
@@ -63,7 +70,7 @@ const CartSummarySection = ({ isPage }) => {
                 <li>
                   <ul className="nav flex-column gap-2">
                     {addressList.map((item) => (
-                      <li key={item.name} className='d-flex'>
+                      <li key={item.name} className="d-flex">
                         <div>{item.label}:</div>
                         {editable ? (
                           <input
