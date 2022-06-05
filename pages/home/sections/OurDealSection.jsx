@@ -34,7 +34,7 @@ const OurDealSection = () => {
       <div>
         <div className='px-3'>
           <ul className='nav row row-cols-2 row-cols-lg-4 gy-4 '>
-            {list.map((item,index) => (
+            {list.map((item, index) => (
               <li key={index} className='col'>
                 <div
                   className='card-bg-hover height-size-5 bg-cover text-white bg-black bg-opacity-25'
@@ -43,13 +43,11 @@ const OurDealSection = () => {
                   }}
                 >
                   <Link href={item.link}>
-                    <a>
-                      <div className='p-4 h-100 d-flex flex-column align-items-center justify-content-end'>
-                        <h4 className='mb-0 text-white fw-bold text-uppercase'>
-                          {item.title}
-                        </h4>
-                      </div>
-                    </a>
+                    <div className='btn p-4 h-100 d-flex flex-column align-items-center justify-content-end'>
+                      <h4 className='mb-0 text-white fw-bold text-uppercase'>
+                        {item.title}
+                      </h4>
+                    </div>
                   </Link>
                 </div>
               </li>

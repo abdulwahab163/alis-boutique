@@ -128,7 +128,10 @@ button {
   border-radius: 8px;
 
   &:focus,
-  &.active,
+  &.active { 
+    box-shadow: 0px 4px 4px #00000040;
+  }
+
   &:hover {
     color: $white;
     background-color: $primary;
@@ -646,9 +649,5 @@ input[type='number']::-webkit-inner-spin-button {
   }
 }
 
-// filter-container
-
-.filter-container {
-}
 
 
