@@ -1,5 +1,5 @@
 import React from 'react';
-import Link from 'next/link';
+
 import ProductCard from '../../../components/ProductCard';
 
 const ProductsSection = ({productsList}) => {
@@ -16,13 +16,6 @@ const ProductsSection = ({productsList}) => {
           </li>
         ))}
       </ul>
-      {/* pagination */}
-      <div className='d-sm-flex text-center align-items-center justify-content-center px-2 mt-4'>
-        <Link href='/'>
-          <a className='btn btn-primary text-capitalize'>show more</a>
-        </Link>
-      </div>
-      {/* /pagination */}
     </div>
   );
 };

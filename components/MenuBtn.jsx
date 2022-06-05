@@ -30,7 +30,7 @@ const MenuBtn = ({ name, categories }) => {
                   <ul className="nav row row-cols-1 row-cols-sm-2 row-cols-lg-4 row-cols-xl-6 gy-3">
                     {categories?.map((item, catIndex) => (
                       <li
-                        index={catIndex}
+                        key={catIndex}
                         onMouseEnter={() => setCheck(item.typeImage)}
                       >
                         <h6 className="d-inline-block mb-2 pb-1 text-uppercase fw-normal border-bottom border-primary">

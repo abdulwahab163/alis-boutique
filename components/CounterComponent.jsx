@@ -14,6 +14,7 @@ const CounterComponent = ({count, setCount}) => {
       <input
         className='form-control form-control-lg p-0 text-center bg-opacity-10 fw-bold border-0 bg-white bg-opacity-50'
         type='text'
+        readOnly
         value={count}
       />
       <button
