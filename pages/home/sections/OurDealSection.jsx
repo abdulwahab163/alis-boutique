@@ -34,8 +34,8 @@ const OurDealSection = () => {
       <div>
         <div className='px-3'>
           <ul className='nav row row-cols-2 row-cols-lg-4 gy-4 '>
-            {list.map((item) => (
-              <li key='our-deal' className='col'>
+            {list.map((item,index) => (
+              <li key={index} className='col'>
                 <div
                   className='card-bg-hover height-size-5 bg-cover text-white bg-black bg-opacity-25'
                   style={{

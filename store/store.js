@@ -19,14 +19,12 @@ const persistedReducer = persistReducer(persistConfig, rootReducer);
 // middleware
 const middleware = [thunk];
 
-const store = createStore(
+export const store = createStore(
   persistedReducer,
   initalState,
   composeWithDevTools(applyMiddleware(...middleware))
 );
 const makeStore = () => store;
 
-const persistor = persistStore(store);
-const wrapper = createWrapper(makeStore);
-
-export { store, wrapper, persistor };
+export const persistor = persistStore(store);
+export const wrapper = createWrapper(makeStore);

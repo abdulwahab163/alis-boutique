@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SignUp = ({ onClickSignIn }) => {
+const SignUp = ({ onClickLogin }) => {
   return (
     <form noValidate>
       <ul className='nav flex-column gap-4'>
@@ -73,7 +73,7 @@ const SignUp = ({ onClickSignIn }) => {
         <li>
           <div className='d-flex justify-content-center gap-4'>
             <span>
-              <button type='button' className='btn p-0' onClick={onClickSignIn}>
+              <button type='button' className='btn p-0' onClick={onClickLogin}>
                 <span className='fs-6'>
                   <small>Are you already a member?</small>
                 </span>
