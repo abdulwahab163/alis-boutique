@@ -96,11 +96,11 @@ const ProductsPage = () => {
 
                         <AccordionComponent title={'price'}>
                           <MultiRangeSlider
-                            min={minPrice}
-                            max={maxPrice}
-                            onChange={() => {
-                              setMinPrice(0);
-                              setMaxPrice(10000);
+                            min={0}
+                            max={10000}
+                            onChange={({min,max}) => {
+                              console.log('min', min)
+                              console.log('max', max)
                             }}
                           />
                         </AccordionComponent>
