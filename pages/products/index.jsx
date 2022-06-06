@@ -9,7 +9,7 @@ import ProductsHeader from './sections/ProductsHeader';
 import ProductsSection from './sections/ProductsSection';
 import ProductsTypes from './sections/ProductsTypes';
 import AccordionComponent from '../../components/AccordionComponent';
-import SelectColor from '../../components/SelectColor';
+import SelectType from '../../components/SelectType';
 import MultiRangeSlider from '../../components/MultiRangeSlider';
 import SelectSize from '../../components/SelectSize';
 
@@ -53,12 +53,12 @@ const ProductsPage = () => {
   ];
 
   const colors = [
-    { color: 'black' },
-    { color: 'red' },
-    { color: 'yellow' },
-    { color: 'gainsboro' },
-    { color: 'white' },
-    { color: 'blue' },
+    { name: 'black', number: '(411)' },
+    { name: 'red', number: '(41)' },
+    { name: 'yellow', number: '(51)' },
+    { name: 'gainsboro', number: '(05)' },
+    { name: 'white', number: '(5)' },
+    { name: 'blue', number: '(15)' },
   ];
 
   return (
@@ -98,16 +98,10 @@ const ProductsPage = () => {
                           <MultiRangeSlider
                             min={minPrice}
                             max={maxPrice}
-                            // onChange={({ minPrice, maxPrice }) => {
-                            //   setMinPrice(minPrice);
-                            //   setMaxPrice(maxPrice);
-
-                            // }}
-                            onChange={({ minPrice, maxPrice }) =>
-                              console.log(
-                                `min = ${minPrice}, max = ${maxPrice}`
-                              )
-                            }
+                            onChange={() => {
+                              setMinPrice(0);
+                              setMaxPrice(10000);
+                            }}
                           />
                         </AccordionComponent>
 
@@ -118,9 +112,12 @@ const ProductsPage = () => {
                         </AccordionComponent>
 
                         <AccordionComponent title={'color'}>
-                          {colors.map((colors) => (
-                            <SelectColor key={colors.color} colors={colors} />
-                          ))}
+                          <ul className='nav flex-column gap-3'>
+                            {colors.map((colors) => (
+                              <SelectType key={colors.color} item={colors} />
+                              // <SelectColor key={colors.color} colors={colors} />
+                            ))}
+                          </ul>
                         </AccordionComponent>
 
                         <li>
