@@ -5,15 +5,17 @@ import { useDispatch, useSelector } from "react-redux";
 import SelectedAds from "../components/SelectedAds";
 import HeroSection from "../pages/home/sections/HeroSection";
 import OurDealSection from "./home/sections/OurDealSection";
-import ProductsTodaySection from "./home/sections/ProductsTodaySection";
-import { getNewArrivals } from "../store/actions/product";
+import { getNewArrivals, getOnSaleProducts } from "../store/actions/product";
 
 export default function Home() {
   const dispatch = useDispatch();
+
   const { newArrivals } = useSelector((state) => state.products);
+  const { onSaleProducts } = useSelector((state) => state.products);
 
   useEffect(() => {
-    dispatch(getNewArrivals({ category: "shirts", CategoryId: 40 }));
+    dispatch(getNewArrivals({ CategoryId: 40 }));
+    dispatch(getOnSaleProducts({ CategoryId: 40 }));
   }, []);
 
   return (
@@ -28,9 +30,13 @@ export default function Home() {
         <HeroSection />
         <OurDealSection />
 
-        {newArrivals.length > 0 && <SelectedAds list={newArrivals} />}
+        {newArrivals?.length > 0 && (
+          <SelectedAds title="new arrivals" list={newArrivals} />
+        )}
 
-        <ProductsTodaySection />
+        {onSaleProducts?.length > 0 && (
+          <SelectedAds title="sale" list={onSaleProducts} />
+        )}
       </main>
     </>
   );

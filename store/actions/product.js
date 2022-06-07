@@ -40,7 +40,7 @@ export const getNewArrivals = (query) => async (disptach) => {
     const { data } = await axios.get(
       `http://13.215.179.176:3002/api/product/search`,
       {
-         params: {...query} 
+        params: { ...query },
       }
     );
     disptach({ type: GET_NEW_ARRIVALS_SUCCESS, payload: data?.data?.rows });
@@ -56,7 +56,7 @@ export const getOnSaleProducts = (query) => async (disptach) => {
     const { data } = await axios.get(
       `http://13.215.179.176:3002/api/product/search`,
       {
-         params: {...query} 
+        params: { ...query },
       }
     );
     disptach({ type: GET_ON_SALE_PRODUCTS_SUCCESS, payload: data?.data?.rows });

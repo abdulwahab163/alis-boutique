@@ -1,22 +1,19 @@
-import React from 'react';
-import { Navigation } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import Link from 'next/link';
+import React from "react";
+import { Navigation } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import Link from "next/link";
 
-import ProductCard from './ProductCard';
-import ContainerPrimary from './Container';
+import ProductCard from "./ProductCard";
+import ContainerPrimary from "./Container";
 
-const SelectedAds = ({list}) => {
-
+const SelectedAds = ({ title, list }) => {
   return (
-    <section className='selected-section mb-5 pb-3'>
+    <section className="selected-section mb-5 pb-3">
       <div>
         <ContainerPrimary>
-          <div className=' mb-4 pb-2 d-flex flex-wrap align-items-center'>
-            <h4 className='mb-0 me-auto fw-500 text-capitalize'>
-              new arrivals
-            </h4>
-            <Link href='/'>
+          <div className=" mb-4 pb-2 d-flex flex-wrap align-items-center">
+            <h4 className="mb-0 me-auto fw-500 text-capitalize">{title}</h4>
+            <Link href="/">
               <a>Show more</a>
             </Link>
           </div>
@@ -42,10 +39,10 @@ const SelectedAds = ({list}) => {
                 },
               }}
             >
-              {list?.map((item,index) => (
-                  <SwiperSlide key={index}>
-                    <ProductCard className='height-size-3' item={item} />
-                  </SwiperSlide>
+              {list?.map((item, index) => (
+                <SwiperSlide key={index}>
+                  <ProductCard className="height-size-3" item={item} />
+                </SwiperSlide>
               ))}
             </Swiper>
           </div>
