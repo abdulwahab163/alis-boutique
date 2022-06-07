@@ -1,8 +1,9 @@
 import React from 'react';
-import ContainerPrimary from './Container';
 import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+
 import ProductCard from './ProductCard';
+import ContainerPrimary from './Container';
 import Link from 'next/link';
 
 const SelectedAds = () => {
@@ -13,11 +14,11 @@ const SelectedAds = () => {
       hoverImage:
         'https://cdn.shopify.com/s/files/1/2635/3244/products/DSC_9544_6fd4fc26-bb9a-44f2-824f-213b96fbd3d2_533x.jpg?v=1646826873',
       name: 'Tear Drop Dangling Earrings',
-      price: '$119.99',
+      price: 149.99,
       discountState: true,
       isHoverImage: true,
-      discount: '30%',
-      discountPrice: '$89.99',
+      discount: 30,
+      discountPrice: 89.99,
     },
     {
       image:
@@ -27,23 +28,31 @@ const SelectedAds = () => {
       isHoverImage: true,
 
       name: 'Loose Knit 3/4 Sleeve',
-      price: '$119.99',
+      price: 119.99,
+      discountState: true,
+      isHoverImage: true,
+      discount: 30,
+      discountPrice: 89.99,
     },
     {
       image:
         'https://cdn.shopify.com/s/files/1/2635/3244/products/DSC_9624_fba97b12-bc22-4e16-a13c-4d3e70363995_533x.jpg?v=1646639839',
       name: 'Basic Slim Fit T-Shirt',
-      price: '$100',
+      price: 100,
 
       discountState: true,
-      discount: '50%',
-      discountPrice: '$50',
+      discount: 50,
+      discountPrice: 50,
     },
     {
       image:
         'https://cdn.shopify.com/s/files/1/2635/3244/products/DSC_0080_145f7167-08d6-4d1f-8708-b707014bbb48_533x.jpg?v=1642764666',
       name: 'Animal Textured Shoulder Bag',
-      price: '$119.99',
+      price: 119.99,
+      discountState: true,
+      isHoverImage: true,
+      discount: 30,
+      discountPrice: 89.99,
     },
   ];
 
