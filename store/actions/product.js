@@ -25,20 +25,23 @@ export const getProduct = (id) => async (disptach) => {
     );
     let product = {
       ...data.data,
-      size: JSON.parse(data.data.size)
-    }
+      size: JSON.parse(data.data.size),
+    };
     disptach({ type: GET_PRODUCT_SUCCESS, payload: product });
   } catch (error) {
     disptach({ type: GET_PRODUCT_FAIL, payload: error.message });
   }
 };
 
-export const getNewArrivals = (id) => async (disptach) => {
+export const getNewArrivals = (query) => async (disptach) => {
   disptach({ type: GET_NEW_ARRIVALS_REQUEST });
 
   try {
     const { data } = await axios.get(
-      `http://13.215.179.176:3002/api/product/${id}`
+      `http://13.215.179.176:3002/api/product/search`,
+      {
+         params: {...query} 
+      }
     );
     disptach({ type: GET_NEW_ARRIVALS_SUCCESS, payload: data?.data?.rows });
   } catch (error) {
@@ -46,12 +49,15 @@ export const getNewArrivals = (id) => async (disptach) => {
   }
 };
 
-export const getOnSaleProducts = (id) => async (disptach) => {
+export const getOnSaleProducts = (query) => async (disptach) => {
   disptach({ type: GET_ON_SALE_PRODUCTS_REQUEST });
 
   try {
     const { data } = await axios.get(
-      `http://13.215.179.176:3002/api/product/${id}`
+      `http://13.215.179.176:3002/api/product/search`,
+      {
+         params: {...query} 
+      }
     );
     disptach({ type: GET_ON_SALE_PRODUCTS_SUCCESS, payload: data?.data?.rows });
   } catch (error) {

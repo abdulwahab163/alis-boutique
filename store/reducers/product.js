@@ -17,7 +17,7 @@ const initialState = {
   products: [],
   product: [],
   newArrivals: [],
-  onsaleProducts: [],
+  onSaleProducts: [],
   loading: false,
   error: null,
 };
@@ -100,7 +100,7 @@ const productReducer = (state = initialState, action) => {
     case GET_ON_SALE_PRODUCTS_REQUEST: {
       return {
         ...state,
-        onsaleProducts: [],
+        onSaleProducts: [],
         loading: true,
         error: null,
       };
@@ -109,7 +109,7 @@ const productReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        onsaleProducts: payload,
+        onSaleProducts: payload,
         error: null,
       };
     }
@@ -117,7 +117,7 @@ const productReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        onsaleProducts: [],
+        onSaleProducts: [],
         error: payload,
       };
     }
