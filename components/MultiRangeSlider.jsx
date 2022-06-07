@@ -1,7 +1,7 @@
-import React, { useCallback, useEffect, useState, useRef } from 'react';
-import classnames from 'classnames';
+import React, { useCallback, useEffect, useState, useRef } from "react";
+import classnames from "classnames";
 
-const MultiRangeSlider = ({ min, max, onChange }) => {
+const MultiRangeSlider = ({ min, max, onChange,currency, reset }) => {
   const [minVal, setMinVal] = useState(min);
   const [maxVal, setMaxVal] = useState(max);
   const minValRef = useRef(null);
@@ -13,6 +13,13 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
     (value) => Math.round(((value - min) / (max - min)) * 100),
     [min, max]
   );
+
+  useEffect(() => {
+    if (reset) {
+      setMinVal(min);
+      setMaxVal(max);
+    }
+  }, [reset]);
 
   // Set width of the range to decrease from the left side
   useEffect(() => {
@@ -42,13 +49,13 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
   // Get min and max values when their state changes
   useEffect(() => {
     onChange({ min: minVal, max: maxVal });
-  }, [minVal, maxVal, onChange]);
+  }, [minVal, maxVal]);
 
   return (
     <>
-      <div className='multi-ranger'>
+      <div className="multi-ranger">
         <input
-          type='range'
+          type="range"
           min={min}
           max={max}
           value={minVal}
@@ -58,12 +65,12 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
             setMinVal(value);
             event.target.value = value.toString();
           }}
-          className={classnames('thumb thumb--zindex-3', {
-            'thumb--zindex-5': minVal > max - 100,
+          className={classnames("thumb thumb--zindex-3", {
+            "thumb--zindex-5": minVal > max - 100,
           })}
         />
         <input
-          type='range'
+          type="range"
           min={min}
           max={max}
           value={maxVal}
@@ -73,31 +80,20 @@ const MultiRangeSlider = ({ min, max, onChange }) => {
             setMaxVal(value);
             event.target.value = value.toString();
           }}
-          className='thumb thumb--zindex-4'
+          className="thumb thumb--zindex-4"
         />
 
-        <div className='slider'>
-          <div className='slider__track' />
-          <div ref={range} className='slider__range' />
-          <div className='slider__left-value badge bg-light bg-opacity-50 fw-normal'>
-            <small>{minVal} USD</small>
+        <div className="slider">
+          <div className="slider__track" />
+          <div ref={range} className="slider__range" />
+          <div className="slider__left-value badge bg-light bg-opacity-50 fw-normal">
+            <small>{minVal} {currency}</small>
           </div>
-          <div className='slider__right-value badge bg-light bg-opacity-50 fw-normal'>
-            <small>{maxVal} USD</small>
+          <div className="slider__right-value badge bg-light bg-opacity-50 fw-normal">
+            <small>{maxVal} {currency}</small>
           </div>
         </div>
       </div>
-
-      {/* <div className='d-flex mt-4 gap-3 justify-content-center text-center text-capitalize'>
-        <div className='border rounded-lg p-2'>
-          <div>Min Price</div>
-          <span>{minVal}</span>
-        </div>
-        <div className='border rounded-lg p-2'>
-          <div>Max Price</div>
-          <span>{maxVal}</span>
-        </div>
-      </div> */}
     </>
   );
 };

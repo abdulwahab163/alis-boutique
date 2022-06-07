@@ -7,7 +7,7 @@ export const getProducts = (query) => async (disptach) => {
     const { data } = await axios.get(
       "http://13.215.179.176:3002/api/product/search",
       {
-        params: { CategoryId: query.id },
+        params: { ...query },
       }
     );
     disptach({ type: GET_PRODUCTS_SUCCESS, payload: data?.data?.rows });
