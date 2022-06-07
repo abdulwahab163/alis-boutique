@@ -48,7 +48,9 @@ const ProductsPage = () => {
   });
 
   useEffect(() => {
-    if (router.query.id) filters.CategoryId = router.query.id;
+    if (router.query.id){
+      setFilters({ ...filters, CategoryId: router.query.id });
+    }
     dispatch(getProducts(filters));
   }, []);
 
@@ -85,7 +87,6 @@ const ProductsPage = () => {
     });
   };
 
-  console.log("filters", filters);
   const handleShowMore = () => {
     console.log("clicked");
   };
@@ -143,7 +144,7 @@ const ProductsPage = () => {
                         <AccordionComponent title={"size"}>
                           {sizes.map((item) => (
                             <SelectType
-                              key={item.size}
+                              key={item.name}
                               item={item}
                               checked={
                                 filters.size !== undefined &&
@@ -160,7 +161,7 @@ const ProductsPage = () => {
                           <ul className="nav flex-column gap-3">
                             {colors.map((item) => (
                               <SelectType
-                                key={item.color}
+                                key={item.name}
                                 item={item}
                                 checked={
                                   filters.color !== undefined &&
