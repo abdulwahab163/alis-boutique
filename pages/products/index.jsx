@@ -48,11 +48,10 @@ const ProductsPage = () => {
   });
 
   useEffect(() => {
-    if (router.query.id){
-      setFilters({ ...filters, CategoryId: router.query.id });
+    if (router.query.id) {
+      dispatch(getProducts(router.query.id));
     }
-    dispatch(getProducts(filters));
-  }, []);
+  }, [router.query.id]);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -78,8 +77,8 @@ const ProductsPage = () => {
   };
 
   const handlePriceRangeChange = (min, max) => {
-    if(reset){
-      setReset(false)
+    if (reset) {
+      setReset(false);
     }
     setFilters({
       ...filters,
@@ -95,6 +94,10 @@ const ProductsPage = () => {
     setReset(true);
     setFilters({ color: [], size: [], price: { min: 0, max: 10000 } });
   };
+
+  if (!products.length > 0) {
+    return <div className="d-flex justify-content-center">No Product Found</div>;
+  }
 
   return (
     <main className="h-100">
@@ -132,7 +135,7 @@ const ProductsPage = () => {
                         <AccordionComponent title={"price"}>
                           <MultiRangeSlider
                             min={0}
-                            max={currency==='PKR'?10000: 1000}
+                            max={currency === "PKR" ? 10000 : 1000}
                             currency={currency}
                             reset={reset}
                             onChange={({ min, max }) =>

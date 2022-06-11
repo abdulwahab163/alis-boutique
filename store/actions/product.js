@@ -1,13 +1,13 @@
 import axios from "axios";
 
-export const getProducts = (query) => async (disptach) => {
+export const getProducts = (CategoryId, query) => async (disptach) => {
   disptach({ type: GET_PRODUCTS_REQUEST });
 
   try {
     const { data } = await axios.get(
       "http://13.215.179.176:3002/api/product/search",
       {
-        params: { ...query },
+        params: { ...query, CategoryId },
       }
     );
     disptach({ type: GET_PRODUCTS_SUCCESS, payload: data?.data?.rows });

@@ -73,18 +73,20 @@ const DetailDataSection = () => {
                   <h5 className="mb-0 fw-normal">
                     {product.saleDiscount ? (
                       <span className="me-4">
-                       {currency} {Math.floor(
+                        {currency}{" "}
+                        {Math.floor(
                           product.price -
                             (product.price / 100) * product.saleDiscount
                         )}
                       </span>
                     ) : (
                       <span className="me-4">
-                       {currency} {Math.floor(product.price - product.discount)}
+                        {currency}{" "}
+                        {Math.floor(product.price - product.discount)}
                       </span>
                     )}
                     <span className="text-danger text-decoration-line-through">
-                    {currency} {product.price}
+                      {currency} {product.price}
                     </span>
                   </h5>
                 </span>
@@ -94,35 +96,43 @@ const DetailDataSection = () => {
         </li>
         {product?.color && (
           <li>
-            <div>
-              <div className="mb-2 fw-500">Color:</div>
-              <ButtonGroup className="flex-wrap">
-                {product.color.split(",").map((item, i) => (
-                  <Button
-                    key={i}
-                    variant="outline-primary"
-                    className={`text-uppercase border border-light ${
-                      selectedProduct.color === item && "bg-primary text-white"
-                    }`}
-                    onClick={() => setColor(item)}
-                  >
-                    {item}
-                  </Button>
-                ))}
-              </ButtonGroup>
-            </div>
+            <div className="mb-2 fw-500">Color:</div>
+            <ButtonGroup className="flex-wrap">
+              {product.color.split(",").map((item, i) => (
+                <Button
+                  key={i}
+                  variant="outline-primary"
+                  className={`text-uppercase border border-light ${
+                    selectedProduct.color === item && "bg-primary text-white"
+                  }`}
+                  onClick={() => setColor(item)}
+                >
+                  {item}
+                </Button>
+              ))}
+            </ButtonGroup>
           </li>
         )}
-        <li>
-          <div>
-            <div className="mb-2 fw-500">Size:</div>
-            <SelectSize
-              sizes={product?.size}
-              size={selectedProduct.size}
-              setSize={setSize}
-            />
-          </div>
-        </li>
+        {product?.size && (
+          <li>
+            <div className="mb-2 fw-500">Color:</div>
+            <ButtonGroup className="flex-wrap">
+              {product.size.map((item, i) => (
+                <Button
+                  key={i}
+                  variant="outline-primary"
+                  className={`text-uppercase border border-light ${
+                    selectedProduct.size.name === item.name &&
+                    "bg-primary text-white"
+                  }`}
+                  onClick={() => setSize(item)}
+                >
+                  {item.name}
+                </Button>
+              ))}
+            </ButtonGroup>
+          </li>
+        )}
         <li>
           <div>
             <div className="mb-2 fw-500">
@@ -143,7 +153,9 @@ const DetailDataSection = () => {
                 <button
                   type="button"
                   className="btn btn-primary shadow-1 w-100 h-100 rounded-pill py-2"
-                  disabled={!selectedProduct.color || !selectedProduct.size.name}
+                  disabled={
+                    !selectedProduct.color || !selectedProduct.size.name
+                  }
                   onClick={() => {
                     dispatch(addCartItem(selectedProduct));
                   }}
